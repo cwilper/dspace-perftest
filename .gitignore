@@ -1,0 +1,5 @@
+*.bak
+*.log
+output/
+plan.cfg
+.DS_Store

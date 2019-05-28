@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+script_dir=$(cd $(dirname $0); pwd)
+. $script_dir/.functions.sh
+
+main() {
+  local version="$1"
+  local tests_dir=$(cd $script_dir/../tests; pwd)
+  [[ $version ]] || die "Must specify test; one of: $(echo $(ls $tests_dir/))"
+  _test_dir="$tests_dir/$version"
+  edit_test
+}
+
+edit_test() {
+  local plan_file="$_test_dir/plan.jmx"
+  require_file "$plan_file"
+  local cfg_file=$(get_cfg $plan_file)
+  [[ $cfg_file ]] || die
+  . $cfg_file
+  local output_dir="$_test_dir/output"
+  [[ -d $output_dir ]] || mkdir "$output_dir"
+  cd "$_test_dir"
+  jmeter -q "$cfg_file" -t "$plan_file" -l output/samples.jtl || local failed=true
+  [[ -f jmeter.log ]] && mv jmeter.log output/
+  [[ $failed ]] && die "Failed to open test"
+}
+
+main "$@"
