@@ -1,5 +1,12 @@
 # Test sessions
 
+* [Overview](#overview)
+* [Transactions](#transactions)
+  - [Big session](#big-session)
+  - [Browse session](#browse-session)
+  - [Search session](#search-session)
+  - [Tiny session](#tiny-session)
+
 ## Overview
 
 Performance tests consist of web requests made by the following types of user _sessions_:
@@ -11,9 +18,9 @@ Performance tests consist of web requests made by the following types of user _s
 
 ## Transactions
 
-Each session consists of a series of ordered _transactions_ (aka page visits), resulting
-from some user action on the site.  When run in JMeter, a random delay ("think time") is
-inserted between each transaction in order to more closely mimic actual user behavior.
+Each session consists of a series of ordered _transactions_ (page visits or downloads),
+resulting from some user action on the site.  When run in JMeter, a random delay ("think time")
+is inserted between each transaction in order to more closely mimic actual user behavior.
 
 ### Big session
 
@@ -59,3 +66,12 @@ Tiny-D-Collection   | Click link to "Tiny Angry Birds" collection
 Tiny-E-Recent       | Click link to show more recent submissions
 Tiny-F-Item         | Click item at top of list
 Tiny-G-ItemFull     | Click to show full item page
+
+## Requests
+
+Transactions are further broken down into a set of HTTP requests that are made for
+that page visit or download.
+
+The specific list of requests is dependent on the version of DSpace under test, and
+is defined in the JMeter test file for that version. After a test is complete, average
+response times and bytes for each request will be listed in the report for each transaction.
