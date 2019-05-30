@@ -1,13 +1,14 @@
-# Test sessions
+# Sessions, transactions, and requests
 
-* [Overview](#overview)
+* [Sessions](#sessions)
 * [Transactions](#transactions)
   - [Big session](#big-session)
   - [Browse session](#browse-session)
   - [Search session](#search-session)
   - [Tiny session](#tiny-session)
+* [Requests](#requests)
 
-## Overview
+## Sessions
 
 Performance tests consist of web requests made by the following types of user _sessions_:
 

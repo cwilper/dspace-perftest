@@ -1,3 +1,7 @@
 # DSpace Performance Testing
 
-* [Sessions](doc/sessions.md)
+This project provides JMeter tests, scripts, and documentation for running DSpace performance tests.
+
+## Documentation
+
+* [Sessions, transactions, and requests](doc/sessions.md)
