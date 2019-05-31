@@ -9,8 +9,8 @@ main() {
   [[ $version ]] || die "Must specify test; one of: $(echo $(ls $tests_dir/))"
   _test_dir="$tests_dir/$version"
   run_test
-#  create_csvs
-#  create_pngs
+  create_csvs
+  create_pngs
   create_index
 }
 
@@ -123,6 +123,10 @@ generate_png() {
   local logfile=$(mktemp)
   require_file "$csv"
   report "-> $png"
+  if [[ -f $png ]]; then
+    warn "PNG already exists; not regenerating"
+    return
+  fi
   "$_cmd" --plugin-type $plugin_type --line-weight 3 --width 1366 --height 768 --input-jtl "$csv" --generate-png "$png" > $logfile 2>&1 || local failed=true
   if [[ $failed ]]; then
     cat "$logfile"
@@ -143,7 +147,7 @@ create_index() {
 
 ## Measurements over time
 
-## Page response times
+## Transaction response times
 
 ![](pages.png)
 EOF
@@ -222,7 +226,11 @@ EOF
     n=$((n+1))
   done < <(cat $jtl)
 
-  for page_name in "${!page_names[@]}"; do
+  #for page_name in "$(echo $(printf '%s\n' "${!page_names[@]}" | sort))"; do
+  #local sorted_names=($(sort <<<"${!page_names[@]}"))
+  #for page_name in "${sorted_names[@]}"; do
+  for page_name in $(printf '%s\n' ${!page_names[@]} | sort); do
+    report "Processing page: '$page_name'"
     local names_for_page=()
     for name in "${!url_by_name[@]}"; do
       if [[ $name =~ ^$page_name ]]; then
@@ -234,15 +242,15 @@ EOF
     local avg_ms=$((${total_ms_by_name[$page_name]} / $num_samples))
     local avg_bytes=$((${total_bytes_by_name[$page_name]} / $num_samples))
     cat >> $md << EOF
-### Transaction: $page_name
+### Transaction: *$page_name*
 
-#### Per transaction
+#### Summary
 
 * Total GET requests: ${#names_for_page[@]}
 * Total seconds: $(bc<<<"scale=3;${avg_ms}/1000")
 * Total size: $(pretty_bytes $avg_bytes)
 
-#### Per request
+#### Per-request breakdown
 
 | Seconds | Size | Request path |
 | - | - | - |
