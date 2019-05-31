@@ -127,7 +127,7 @@ generate_png() {
     warn "PNG already exists; not regenerating"
     return
   fi
-  "$_cmd" --plugin-type $plugin_type --line-weight 3 --width 1366 --height 768 --input-jtl "$csv" --generate-png "$png" > $logfile 2>&1 || local failed=true
+  "$_cmd" --plugin-type $plugin_type --line-weight 1 --width 1366 --height 768 --input-jtl "$csv" --generate-png "$png" > $logfile 2>&1 || local failed=true
   if [[ $failed ]]; then
     cat "$logfile"
     rm "$logfile"
