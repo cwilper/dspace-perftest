@@ -52,7 +52,7 @@ Transaction             | User action
 ------------------------|-------------------------------------------------------
 Search-A-Home           | Visit homepage
 Search-B-GlobalSearch   | Search for "attenuation"
-Search-C-FilterAuthor   | Filter by author "Busy Cylinder Head"
+Search-C-FilterAuthor   | Filter by author "Bushy Cylinder Head"
 Search-D-MediumItem     | Select first title that starts with "Medium"
 Search-E-MediumDownload | Download text.pdf
 
