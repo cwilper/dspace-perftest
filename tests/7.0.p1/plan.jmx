@@ -58,16 +58,6 @@
             <stringProp name="Argument.value">${__P(perfmon_port)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="thread_count" elementType="Argument">
-            <stringProp name="Argument.name">thread_count</stringProp>
-            <stringProp name="Argument.value">${__P(thread_count)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="loop_count" elementType="Argument">
-            <stringProp name="Argument.name">loop_count</stringProp>
-            <stringProp name="Argument.value">${__P(loop_count)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
         </collectionProp>
       </Arguments>
       <hashTree/>
