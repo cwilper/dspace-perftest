@@ -1,0 +1,283 @@
+#!/usr/bin/env bash
+
+script_dir=$(cd $(dirname $0); pwd)
+. $script_dir/.functions.sh
+
+main() {
+  local version="$1"
+  local tests_dir=$(cd $script_dir/../tests; pwd)
+  [[ $version ]] || die "Must specify test; one of: $(echo $(ls $tests_dir/))"
+  _test_dir="$tests_dir/$version"
+  _output_dir="$_test_dir/output"
+  create_csvs
+  create_pngs
+  create_md
+}
+
+outfile() {
+  echo "$_output_dir/$1"
+}
+
+create_csvs() {
+  bold "Creating csv files from jtl"
+  local jtl
+  local csv
+
+  # Extract page-level statistics
+  jtl=$(outfile samples.jtl)
+  csv=$(outfile pages.csv)
+  require_file "$jtl"
+  report "-> $csv"
+  grep -E "^timeStamp|Number of samples" "$jtl" > "$csv"
+
+  # Extract top url-level statistics
+  csv=$(outfile requests.csv)
+  report "-> $csv"
+  grep -v "Number of samples" "$jtl" > "$csv"
+
+  # Extract Home statistics
+  csv=$(outfile home.csv)
+  report "-> $csv"
+  sed -e 's|,[^,-]*-A-Home|,Home|g' "$jtl" | grep -E '^timeStamp|,Home,' > "$csv"
+
+  # Relabel cpu metrics
+  jtl=$(outfile cpu.jtl)
+  csv=$(outfile cpu.csv)
+  if [[ -f $jtl ]]; then
+    report "-> $csv"
+    sed -e "s|,$host CPU,|,system CPU %,|g" $jtl > $csv
+    if [[ $node_pid ]]; then
+      sed -i '' "s|,$host CPU pid=$node_pid,|,node CPU %,|g" $csv
+    fi
+    if [[ $solr_pid ]]; then
+      sed -i '' "s|,$host CPU pid=$solr_pid,|,solr CPU %,|g" $csv
+    fi
+    if [[ $tomcat_pid ]]; then
+      sed -i '' "s|,$host CPU pid=$tomcat_pid,|,tomcat CPU %,|g" $csv
+    fi
+  fi
+
+  # Relabel memory metrics
+  jtl=$(outfile database.jtl)
+  csv=$(outfile database.csv)
+  if [[ -f $jtl ]]; then
+    report "-> $csv"
+    sed -e "s|,$host EXEC.*state=\'\(.*\)\',|,\1 connections,|g" $jtl > $csv
+  fi
+
+  # Relabel database metrics
+  jtl=$(outfile memory.jtl)
+  csv=$(outfile memory.csv)
+  if [[ -f $jtl ]]; then
+    report "-> $csv"
+    sed -e "s|,$host Memory,|,system memory used %,|g" $jtl > $csv
+    if [[ $node_pid ]]; then
+      sed -i '' "s|,$host Memory pid=$node_pid,|,node bytes used,|g" $csv
+    fi
+    if [[ $solr_pid ]]; then
+      sed -i '' "s|,$host EXEC .*heapbytes:$solr_pid,|,solr heap bytes used,|g" $csv
+    fi
+    if [[ $tomcat_pid ]]; then
+      sed -i '' "s|,$host EXEC .*heapbytes:$tomcat_pid,|,tomcat heap bytes used,|g" $csv
+    fi
+  fi
+
+  jtl=$(outfile hits.jtl)
+  csv=$(outfile hits.csv)
+  if [[ -f $jtl ]]; then
+    report "-> $csv"
+    cp $jtl $csv
+  fi
+}
+
+create_pngs() {
+  bold "Creating png files from csv"
+
+  # First, determine path of JMeterPluginsCMD.sh and make sure it exists
+  local jmeter_path=$(which jmeter)
+  if [[ -e $jmeter_path ]]; then
+    jmeter_path=$(readlink $jmeter_path)
+  fi
+  _cmd="$(cd $(dirname $jmeter_path); pwd)/JMeterPluginsCMD.sh"
+  require_file "$_cmd"
+
+  # Generate png for ReponseTimesOverTime and PerfMon outputs, as available
+  generate_png ResponseTimesOverTime home home
+  generate_png ThreadsStateOverTime hits threads
+  generate_png ResponseCodesPerSecond hits codes
+  generate_png HitsPerSecond hits hits
+  for name in cpu database memory; do
+    [[ -f $(outfile $name.csv) ]] && generate_png PerfMon $name $name
+  done
+}
+
+generate_png() {
+  local plugin_type=$1
+  local csv=$(outfile $2.csv)
+  local png=$(outfile $3.png)
+  local logfile=$(mktemp)
+  require_file "$csv"
+  report "-> $png"
+  if [[ -f $png ]]; then
+    warn "PNG already exists; not regenerating"
+    return
+  fi
+  "$_cmd" --plugin-type $plugin_type --line-weight 1 --width 1366 --height 768 --input-jtl "$csv" --generate-png "$png" > $logfile 2>&1 || local failed=true
+  if [[ $failed ]]; then
+    cat "$logfile"
+    rm "$logfile"
+    die "Failed to generate png"
+  else
+    rm "$logfile"
+  fi
+}
+
+create_md() {
+  bold "Creating README.md"
+  md=$(outfile README.md)
+  report "-> $md"
+
+  cat > $md << EOF
+# Test Results
+
+## Measurements over time
+
+## Transaction response times
+
+![](pages.png)
+EOF
+
+  if [[ -f $(outfile memory.csv) ]]; then
+    cat >> $md << EOF
+
+## Server memory use
+
+![](memory.png)
+EOF
+  fi
+
+  if [[ -f $(outfile cpu.csv) ]]; then
+    cat >> $md << EOF
+
+## Server CPU use
+
+![](cpu.png)
+EOF
+  fi
+
+  if [[ -f $(outfile database.csv) ]]; then
+    cat >> $md << EOF
+
+## Database connections
+
+![](database.png)
+EOF
+  fi
+
+  cat >> $md << EOF
+
+## Average response times and sizes
+
+EOF
+
+  # Compute and add averages
+  jtl=$(outfile samples.jtl)
+
+  declare -A page_names
+  declare -A total_bytes_by_name
+  declare -A total_ms_by_name
+  declare -A num_samples_by_name
+  declare -A url_by_name
+
+  local n=0
+  while read line; do
+    if [[ $n > 0 ]]; then
+      IFS="," read -ra arr <<< "$line"
+      local name=${arr[2]}
+
+      local url_index=13
+      local byte_index=$((url_index - 4))
+      if [[ ${arr[4]} =~ "Number of samples" ]]; then
+        page_names[$name]=$name
+        byte_index=$((byte_index + 1))
+      else
+        url_by_name[$name]=${arr[$url_index]}
+      fi
+
+      local bytes=${arr[$byte_index]}
+      local total_bytes=${total_bytes_by_name[$name]}
+      total_bytes=$((total_bytes+bytes))
+      total_bytes_by_name[$name]=$total_bytes
+
+      local ms=${arr[1]}
+      local total_ms=${total_ms_by_name[$name]}
+      total_ms=$((total_ms+ms))
+      total_ms_by_name[$name]=$total_ms
+
+      local num_samples=${num_samples_by_name[$name]}
+      num_samples=$((num_samples+1))
+      num_samples_by_name[$name]=$num_samples
+    fi
+    n=$((n+1))
+  done < <(cat $jtl)
+
+  #for page_name in "$(echo $(printf '%s\n' "${!page_names[@]}" | sort))"; do
+  #local sorted_names=($(sort <<<"${!page_names[@]}"))
+  #for page_name in "${sorted_names[@]}"; do
+  for page_name in $(printf '%s\n' ${!page_names[@]} | sort); do
+    report "Processing page: '$page_name'"
+    local names_for_page=()
+    for name in "${!url_by_name[@]}"; do
+      if [[ $name =~ ^$page_name ]]; then
+        names_for_page+=($name)
+      fi
+    done
+
+    local num_samples=${num_samples_by_name[$page_name]}
+    local avg_ms=$((${total_ms_by_name[$page_name]} / $num_samples))
+    local avg_bytes=$((${total_bytes_by_name[$page_name]} / $num_samples))
+    cat >> $md << EOF
+### Transaction: *$page_name*
+
+#### Summary
+
+* Total GET requests: ${#names_for_page[@]}
+* Total seconds: $(bc<<<"scale=3;${avg_ms}/1000")
+* Total size: $(pretty_bytes $avg_bytes)
+
+#### Per-request breakdown
+
+| Seconds | Size | Request path |
+| - | - | - |
+EOF
+
+    while read name; do
+      num_samples=${num_samples_by_name[$name]}
+      avg_ms=$((${total_ms_by_name[$name]} / $num_samples))
+      avg_bytes=$((${total_bytes_by_name[$name]} / $num_samples))
+      local sec=$(bc<<<"scale=3;${avg_ms}/1000")
+      if [[ $avg_ms -ge 1000 ]]; then
+        sec="**$sec**"
+      fi
+      local size=$(pretty_bytes $avg_bytes)
+      if [[ $avg_bytes -ge 1000000 ]]; then
+        size="**$size**"
+      fi
+      local url=${url_by_name[$name]}
+      local u1=${url/*\/\//}
+      IFS=/ read -ra u2<<<"$u1"
+      url=${u1/${u2[0]}/}
+      echo "| $sec | $size | $url |" >> $md
+    done < <(for name in "${!url_by_name[@]}"; do
+               if [[ $name =~ ^$page_name ]]; then
+                 echo "$name"
+               fi
+             done | sort)
+
+    echo "" >> $md
+  done
+
+}
+
+
+main "$@"
