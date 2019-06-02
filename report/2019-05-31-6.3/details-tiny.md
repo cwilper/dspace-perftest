@@ -2,13 +2,13 @@
 
 Transaction | Requests | Bytes | Seconds | Request details
 -|-|-|-|-
-Tiny-A-Home | 11 | 694KB | .23 | [See below](#Tiny-A-Home-requests)
-Tiny-B-Community | 1 | 42KB | .76 | [See below](#Tiny-B-Community-requests)
-Tiny-C-Subcommunity | 1 | 42KB | .44 | [See below](#Tiny-C-Subcommunity-requests)
-Tiny-D-Collection | 1 | 39KB | .32 | [See below](#Tiny-D-Collection-requests)
-Tiny-E-Recent | 1 | 32KB | .24 | [See below](#Tiny-E-Recent-requests)
-Tiny-F-Item | 1 | 14KB | .15 | [See below](#Tiny-F-Item-requests)
-Tiny-G-ItemFull | 1 | 16KB | .17 | [See below](#Tiny-G-ItemFull-requests)
+Tiny-A-Home | 11 | 694KB | .23 | [See below](#tiny-a-home-requests)
+Tiny-B-Community | 1 | 42KB | .76 | [See below](#tiny-b-community-requests)
+Tiny-C-Subcommunity | 1 | 42KB | .44 | [See below](#tiny-c-subcommunity-requests)
+Tiny-D-Collection | 1 | 39KB | .32 | [See below](#tiny-d-collection-requests)
+Tiny-E-Recent | 1 | 32KB | .24 | [See below](#tiny-e-recent-requests)
+Tiny-F-Item | 1 | 14KB | .15 | [See below](#tiny-f-item-requests)
+Tiny-G-ItemFull | 1 | 16KB | .17 | [See below](#tiny-g-itemfull-requests)
 
 ## Tiny-A-Home requests
 

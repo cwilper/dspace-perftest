@@ -2,12 +2,12 @@
 
 Transaction | Requests | Bytes | Seconds | Request details
 -|-|-|-|-
-Browse-A-Home | 33 | 3.0MB | 7.82 | [See below](#Browse-A-Home-requests)
-Browse-B-ByTitleBig20 | 2 | 1.1MB | 4.16 | [See below](#Browse-B-ByTitleBig20-requests)
-Browse-C-ByTitleBig100 | 1 | 5.6MB | 29.15 | [See below](#Browse-C-ByTitleBig100-requests)
-Browse-D-ByTitleSmall100 | 1 | 1.7MB | 4.09 | [See below](#Browse-D-ByTitleSmall100-requests)
-Browse-E-SmallItem | 5 | 44KB | .29 | [See below](#Browse-E-SmallItem-requests)
-Browse-F-SmallDownload | 3 | 49KB | .17 | [See below](#Browse-F-SmallDownload-requests)
+Browse-A-Home | 33 | 3.0MB | 7.82 | [See below](#browse-a-home-requests)
+Browse-B-ByTitleBig20 | 2 | 1.1MB | 4.16 | [See below](#browse-b-bytitlebig20-requests)
+Browse-C-ByTitleBig100 | 1 | 5.6MB | 29.15 | [See below](#browse-c-bytitlebig100-requests)
+Browse-D-ByTitleSmall100 | 1 | 1.7MB | 4.09 | [See below](#browse-d-bytitlesmall100-requests)
+Browse-E-SmallItem | 5 | 44KB | .29 | [See below](#browse-e-smallitem-requests)
+Browse-F-SmallDownload | 3 | 49KB | .17 | [See below](#browse-f-smalldownload-requests)
 
 ## Browse-A-Home requests
 

@@ -2,11 +2,11 @@
 
 Transaction | Requests | Bytes | Seconds | Request details
 -|-|-|-|-
-Search-A-Home | 33 | 3.0MB | 7.76 | [See below](#Search-A-Home-requests)
-Search-B-GlobalSearch | 41 | 1.4MB | 3.65 | [See below](#Search-B-GlobalSearch-requests)
-Search-C-FilterAuthor | 33 | 455KB | 2.02 | [See below](#Search-C-FilterAuthor-requests)
-Search-D-MediumItem | 4 | 28KB | .06 | [See below](#Search-D-MediumItem-requests)
-Search-E-MediumDownload | 3 | 89KB | .14 | [See below](#Search-E-MediumDownload-requests)
+Search-A-Home | 33 | 3.0MB | 7.76 | [See below](#search-a-home-requests)
+Search-B-GlobalSearch | 41 | 1.4MB | 3.65 | [See below](#search-b-globalsearch-requests)
+Search-C-FilterAuthor | 33 | 455KB | 2.02 | [See below](#search-c-filterauthor-requests)
+Search-D-MediumItem | 4 | 28KB | .06 | [See below](#search-d-mediumitem-requests)
+Search-E-MediumDownload | 3 | 89KB | .14 | [See below](#search-e-mediumdownload-requests)
 
 ## Search-A-Home requests
 

@@ -322,7 +322,7 @@ EOF
         local avg_ms=$((${total_ms_by_page_name[$page_name]} / $num_samples))
         local avg_bytes=$((${total_bytes_by_page_name[$page_name]} / $num_samples))
         cat >> $md << EOF
-$page_name | ${#names_for_page[@]} | $(pretty_bytes $avg_bytes) | $(bc<<<"scale=2;${avg_ms}/1000") | [See below](#$page_name-requests)
+$page_name | ${#names_for_page[@]} | $(pretty_bytes $avg_bytes) | $(bc<<<"scale=2;${avg_ms}/1000") | [See below](#${page_name,,}-requests)
 EOF
       fi
     done
