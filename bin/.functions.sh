@@ -69,9 +69,9 @@ require_file() {
 
 pretty_bytes() {
   if [[ $1 -ge 1000000 ]]; then
-    echo "$(bc<<<"scale=2;$1/1000000")MB"
+    echo "$(bc<<<"scale=1;$1/1000000")MB"
   elif [[ $1 -ge 1000 ]]; then
-    echo "$(bc<<<"scale=2;$1/1000")KB"
+    echo "$(bc<<<"scale=0;$1/1000")KB"
   else
     echo "$1 bytes"
   fi

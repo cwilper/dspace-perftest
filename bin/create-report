@@ -4,11 +4,16 @@ script_dir=$(cd $(dirname $0); pwd)
 . $script_dir/.functions.sh
 
 main() {
-  local version="$1"
-  local tests_dir=$(cd $script_dir/../tests; pwd)
-  [[ $version ]] || die "Must specify test; one of: $(echo $(ls $tests_dir/))"
-  _test_dir="$tests_dir/$version"
-  _output_dir="$_test_dir/output"
+  if [[ $1 =~ / ]]; then
+    _output_dir=$1
+    require_file $(outfile samples.jtl)
+  else
+    local version="$1"
+    local tests_dir=$(cd $script_dir/../tests; pwd)
+    [[ $version ]] || die "Must specify directory or test"
+    _output_dir="$tests_dir/$version/output"
+    require_file $(outfile samples.jtl)
+  fi
   create_csvs
   create_pngs
   create_md
@@ -137,147 +142,244 @@ create_md() {
   md=$(outfile README.md)
   report "-> $md"
 
-  cat > $md << EOF
-# Test Results
-
-## Measurements over time
-
-## Transaction response times
-
-![](pages.png)
-EOF
-
-  if [[ -f $(outfile memory.csv) ]]; then
-    cat >> $md << EOF
-
-## Server memory use
-
-![](memory.png)
-EOF
-  fi
-
-  if [[ -f $(outfile cpu.csv) ]]; then
-    cat >> $md << EOF
-
-## Server CPU use
-
-![](cpu.png)
-EOF
-  fi
-
-  if [[ -f $(outfile database.csv) ]]; then
-    cat >> $md << EOF
-
-## Database connections
-
-![](database.png)
-EOF
-  fi
-
-  cat >> $md << EOF
-
-## Average response times and sizes
-
-EOF
-
   # Compute and add averages
   jtl=$(outfile samples.jtl)
 
+  declare -A session_names
   declare -A page_names
-  declare -A total_bytes_by_name
-  declare -A total_ms_by_name
-  declare -A num_samples_by_name
+  declare -A total_bytes_by_page_name
+  declare -A total_bytes_by_session_name
+  declare -A total_ms_by_page_name
+  declare -A total_ms_by_session_name
+  declare -A num_samples_by_page_name
+  declare -A num_samples_by_session_name
   declare -A url_by_name
 
   local n=0
+  local ts1
   while read line; do
     if [[ $n > 0 ]]; then
       IFS="," read -ra arr <<< "$line"
-      local name=${arr[2]}
-
-      local url_index=13
-      local byte_index=$((url_index - 4))
-      if [[ ${arr[4]} =~ "Number of samples" ]]; then
-        page_names[$name]=$name
-        byte_index=$((byte_index + 1))
-      else
-        url_by_name[$name]=${arr[$url_index]}
+      local page_name=${arr[2]}
+      local ts=${arr[0]}
+      if [[ $n = 1 ]]; then
+        ts1=$ts
       fi
+      local elapsed=$((ts-ts1))
+      if [[ $elapsed -lt $((1000 * 60 * 5)) ]]; then
+        IFS="-" read -ra arr2 <<< "$page_name"
+        local session_name=${arr2[0]}
 
-      local bytes=${arr[$byte_index]}
-      local total_bytes=${total_bytes_by_name[$name]}
-      total_bytes=$((total_bytes+bytes))
-      total_bytes_by_name[$name]=$total_bytes
+        local url_index=13
+        local byte_index=$((url_index - 4))
+        if [[ ${arr[4]} =~ "Number of samples" ]]; then
+          page_names[$page_name]=$page_name
+          session_names[$session_name]=$session_name
+          byte_index=$((byte_index + 1))
+        else
+          url_by_name[$page_name]=${arr[$url_index]}
+        fi
 
-      local ms=${arr[1]}
-      local total_ms=${total_ms_by_name[$name]}
-      total_ms=$((total_ms+ms))
-      total_ms_by_name[$name]=$total_ms
+        local bytes=${arr[$byte_index]}
+        local total_bytes=${total_bytes_by_page_name[$page_name]}
+        total_bytes=$((total_bytes+bytes))
+        total_bytes_by_page_name[$page_name]=$total_bytes
 
-      local num_samples=${num_samples_by_name[$name]}
-      num_samples=$((num_samples+1))
-      num_samples_by_name[$name]=$num_samples
+        total_bytes=${total_bytes_by_session_name[$session_name]}
+        total_bytes=$((total_bytes+bytes))
+        total_bytes_by_session_name[$session_name]=$total_bytes
+
+        local ms=${arr[1]}
+        local total_ms=${total_ms_by_page_name[$page_name]}
+        total_ms=$((total_ms+ms))
+        total_ms_by_page_name[$page_name]=$total_ms
+
+        total_ms=${total_ms_by_session_name[$session_name]}
+        total_ms=$((total_ms+ms))
+        total_ms_by_session_name[$session_name]=$total_ms
+
+        local num_samples=${num_samples_by_page_name[$page_name]}
+        num_samples=$((num_samples+1))
+        num_samples_by_page_name[$page_name]=$num_samples
+
+        num_samples=${num_samples_by_session_name[$session_name]}
+        num_samples=$((num_samples+1))
+        num_samples_by_session_name[$session_name]=$num_samples
+      fi
     fi
     n=$((n+1))
   done < <(cat $jtl)
 
-  #for page_name in "$(echo $(printf '%s\n' "${!page_names[@]}" | sort))"; do
-  #local sorted_names=($(sort <<<"${!page_names[@]}"))
-  #for page_name in "${sorted_names[@]}"; do
-  for page_name in $(printf '%s\n' ${!page_names[@]} | sort); do
-    report "Processing page: '$page_name'"
-    local names_for_page=()
-    for name in "${!url_by_name[@]}"; do
-      if [[ $name =~ ^$page_name ]]; then
-        names_for_page+=($name)
+  cat > $md << EOF
+# DSpace performance test report
+
+## Single-threaded results
+
+Session | Pages/session | Bytes/session | Seconds/session | Transaction details
+-|-|-|-|-
+EOF
+
+  for session_name in $(printf '%s\n' ${!session_names[@]} | sort); do
+    local num_pages=0
+    for page_name in $(printf '%s\n' ${!page_names[@]}); do
+      if [[ $page_name =~ ^$session_name- ]]; then
+        num_pages=$((num_pages+1))
       fi
     done
 
-    local num_samples=${num_samples_by_name[$page_name]}
-    local avg_ms=$((${total_ms_by_name[$page_name]} / $num_samples))
-    local avg_bytes=$((${total_bytes_by_name[$page_name]} / $num_samples))
+    local total_avg_ms_for_session=0
+    local total_avg_bytes_for_session=0
+
+    for page_name in $(printf '%s\n' ${!page_names[@]} | sort); do
+      if [[ $page_name =~ ^$session_name- ]]; then
+        local names_for_page=()
+        for name in "${!url_by_name[@]}"; do
+          if [[ $name =~ ^$page_name ]]; then
+            local url=${url_by_name[$name]}
+            local u1=${url/*\/\//}
+            IFS=/ read -ra u2<<<"$u1"
+            url=${u1/${u2[0]}/}
+            if [[ $url ]]; then
+              names_for_page+=($name)
+            fi
+          fi
+        done
+
+        local num_samples=${num_samples_by_page_name[$page_name]}
+        local avg_ms=$((${total_ms_by_page_name[$page_name]} / $num_samples))
+        local avg_bytes=$((${total_bytes_by_page_name[$page_name]} / $num_samples))
+
+        total_avg_ms_for_session=$((total_avg_ms_for_session + avg_ms))
+        total_avg_bytes_for_session=$((total_avg_bytes_for_session + avg_bytes))
+      fi
+    done
+
+    local sec=$(bc<<<"scale=1;${total_avg_ms_for_session}/1000")
+    local size=$(pretty_bytes $total_avg_bytes_for_session)
+    echo "$session_name | $num_pages | $size | $sec | [See details](details-${session_name,,})" >> $md
+  done
+
     cat >> $md << EOF
-### Transaction: *$page_name*
 
-#### Summary
+## Multi-threaded results
 
-* Total GET requests: ${#names_for_page[@]}
-* Total seconds: $(bc<<<"scale=3;${avg_ms}/1000")
-* Total size: $(pretty_bytes $avg_bytes)
+### Concurrent threads
 
-#### Per-request breakdown
+![](threads.png)
 
-| Seconds | Size | Request path |
+### Homepage load time
+
+![](home.png)
+
+### Overall hit rate
+
+![](hits.png)
+
+### Response codes
+
+![](codes.png)
+
+### CPU use
+
+![](cpu.png)
+
+### Database connections
+
+![](database.png)
+
+### Memory use
+
+![](memory.png)
+
+EOF
+
+  for session_name in $(printf '%s\n' ${!session_names[@]} | sort); do
+    md=$(outfile details-${session_name,,}.md)
+    report "-> $md"
+    cat > $md << EOF
+# $session_name session details
+
+Transaction | Requests | Bytes | Seconds | Request details
+-|-|-|-|-
+EOF
+
+    for page_name in $(printf '%s\n' ${!page_names[@]} | sort); do
+      if [[ $page_name =~ ^$session_name- ]]; then
+        local names_for_page=()
+        for name in "${!url_by_name[@]}"; do
+          if [[ $name =~ ^$page_name ]]; then
+            local url=${url_by_name[$name]}
+            local u1=${url/*\/\//}
+            IFS=/ read -ra u2<<<"$u1"
+            url=${u1/${u2[0]}/}
+            if [[ $url ]]; then
+              names_for_page+=($name)
+            fi
+          fi
+        done
+
+        local num_samples=${num_samples_by_page_name[$page_name]}
+        local avg_ms=$((${total_ms_by_page_name[$page_name]} / $num_samples))
+        local avg_bytes=$((${total_bytes_by_page_name[$page_name]} / $num_samples))
+        cat >> $md << EOF
+$page_name | ${#names_for_page[@]} | $(pretty_bytes $avg_bytes) | $(bc<<<"scale=2;${avg_ms}/1000") | [See below](#$page_name-requests)
+EOF
+      fi
+    done
+
+    for page_name in $(printf '%s\n' ${!page_names[@]} | sort); do
+      if [[ $page_name =~ ^$session_name- ]]; then
+        local names_for_page=()
+        for name in "${!url_by_name[@]}"; do
+          if [[ $name =~ ^$page_name ]]; then
+            local url=${url_by_name[$name]}
+            local u1=${url/*\/\//}
+            IFS=/ read -ra u2<<<"$u1"
+            url=${u1/${u2[0]}/}
+            if [[ $url ]]; then
+              names_for_page+=($name)
+            fi
+          fi
+        done
+
+        local num_samples=${num_samples_by_page_name[$page_name]}
+        local avg_ms=$((${total_ms_by_page_name[$page_name]} / $num_samples))
+        local avg_bytes=$((${total_bytes_by_page_name[$page_name]} / $num_samples))
+        cat >> $md << EOF
+
+## $page_name requests
+
+| Bytes/request | Seconds/request | Path |
 | - | - | - |
 EOF
 
-    while read name; do
-      num_samples=${num_samples_by_name[$name]}
-      avg_ms=$((${total_ms_by_name[$name]} / $num_samples))
-      avg_bytes=$((${total_bytes_by_name[$name]} / $num_samples))
-      local sec=$(bc<<<"scale=3;${avg_ms}/1000")
-      if [[ $avg_ms -ge 1000 ]]; then
-        sec="**$sec**"
+        while read name; do
+          local url=${url_by_name[$name]}
+          local u1=${url/*\/\//}
+          IFS=/ read -ra u2<<<"$u1"
+          url=${u1/${u2[0]}/}
+          if [[ $url ]]; then
+            num_samples=${num_samples_by_page_name[$name]}
+            avg_ms=$((${total_ms_by_page_name[$name]} / $num_samples))
+            avg_bytes=$((${total_bytes_by_page_name[$name]} / $num_samples))
+            local sec=$(bc<<<"scale=2;${avg_ms}/1000")
+            if [[ $avg_ms -ge 1000 ]]; then
+              sec="**$sec**"
+            fi
+            local size=$(pretty_bytes $avg_bytes)
+            if [[ $avg_bytes -ge 1000000 ]]; then
+              size="**$size**"
+            fi
+            echo "| $size | $sec | $url |" >> $md
+          fi
+        done < <(for name in "${!url_by_name[@]}"; do
+                   if [[ $name =~ ^$page_name ]]; then
+                     echo "$name"
+                   fi
+                 done | sort)
       fi
-      local size=$(pretty_bytes $avg_bytes)
-      if [[ $avg_bytes -ge 1000000 ]]; then
-        size="**$size**"
-      fi
-      local url=${url_by_name[$name]}
-      local u1=${url/*\/\//}
-      IFS=/ read -ra u2<<<"$u1"
-      url=${u1/${u2[0]}/}
-      echo "| $sec | $size | $url |" >> $md
-    done < <(for name in "${!url_by_name[@]}"; do
-               if [[ $name =~ ^$page_name ]]; then
-                 echo "$name"
-               fi
-             done | sort)
-
-    echo "" >> $md
+    done
   done
-
 }
-
 
 main "$@"
