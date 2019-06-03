@@ -1,4 +1,4 @@
-# DSpace performance test report
+# DSpace 7.0 Preview 1 baseline report
 
 ## Single-threaded results
 

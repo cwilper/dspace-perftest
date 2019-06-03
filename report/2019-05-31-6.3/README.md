@@ -1,4 +1,4 @@
-# DSpace performance test report
+# DSpace 6.3 baseline report
 
 ## Single-threaded results
 
