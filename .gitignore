@@ -1,6 +1,6 @@
 *.bak
 *.log
 output/
-plan.cfg
+tests/**/plan.cfg
 .DS_Store
 recording.xml
