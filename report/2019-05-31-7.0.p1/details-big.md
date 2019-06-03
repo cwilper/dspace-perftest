@@ -1,6 +1,12 @@
-# Big session details
+# "Big" session details
 
-Transaction | Requests | Bytes | Seconds | Request details
+The following numbers are averages observed during the first five minutes of the test, which
+was single-threaded.
+
+For detailed information about the user activities associated with each "transaction" below,
+see [../../doc/sessions](Sessions, transactions, and requests).
+
+Transaction | Requests | Bytes/transaction | Seconds/transaction | Request details
 -|-|-|-|-
 Big-A-Home | 33 | 3.0MB | 9.71 | [See below](#big-a-home-requests)
 Big-B-Community | 8 | 3KB | .40 | [See below](#big-b-community-requests)
@@ -10,7 +16,13 @@ Big-E-Recent | 16 | 527KB | 4.91 | [See below](#big-e-recent-requests)
 Big-F-Item | 2 | 18KB | .02 | [See below](#big-f-item-requests)
 Big-G-ItemFull | 1 | 12KB | 0 | [See below](#big-g-itemfull-requests)
 
-## Big-A-Home requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Big-A-Home requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
@@ -48,7 +60,13 @@ Big-G-ItemFull | 1 | 12KB | 0 | [See below](#big-g-itemfull-requests)
 | 412 bytes | .47 | /spring-rest/api/core/communities/02f7521c-b14f-41eb-9557-c3112f932800/logo |
 | 413 bytes | .35 | /spring-rest/api/core/communities/edb3df48-cba7-4c27-b573-50906be42a5f/logo |
 
-## Big-B-Community requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Big-B-Community requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
@@ -61,7 +79,13 @@ Big-G-ItemFull | 1 | 12KB | 0 | [See below](#big-g-itemfull-requests)
 | 412 bytes | .04 | /spring-rest/api/core/communities/82ce68a0-f9c7-4faa-ba41-87cb48d72952/logo |
 | 412 bytes | .03 | /spring-rest/api/core/communities/4643ed40-961a-43fb-a716-6ddf0753d3b4/logo |
 
-## Big-C-Subcommunity requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Big-C-Subcommunity requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
@@ -84,7 +108,13 @@ Big-G-ItemFull | 1 | 12KB | 0 | [See below](#big-g-itemfull-requests)
 | 12KB | 0 | /spring-rest/api/core/collections/1dccf6fd-5bda-4140-a1ee-ccd428504b95/license |
 | 413 bytes | .01 | /spring-rest/api/core/collections/1dccf6fd-5bda-4140-a1ee-ccd428504b95/logo |
 
-## Big-D-Collection requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Big-D-Collection requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
@@ -108,7 +138,13 @@ Big-G-ItemFull | 1 | 12KB | 0 | [See below](#big-g-itemfull-requests)
 | 754 bytes | .21 | /spring-rest/api/core/items/8260d47e-d1be-44d3-b401-abfd92b37085/relationships |
 | 33KB | .22 | /spring-rest/api/core/items/8260d47e-d1be-44d3-b401-abfd92b37085/bitstreams |
 
-## Big-E-Recent requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Big-E-Recent requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
@@ -129,14 +165,26 @@ Big-G-ItemFull | 1 | 12KB | 0 | [See below](#big-g-itemfull-requests)
 | 754 bytes | .26 | /spring-rest/api/core/items/19e65090-c15d-40e4-b098-f8b31d007a48/relationships |
 | 33KB | .27 | /spring-rest/api/core/items/19e65090-c15d-40e4-b098-f8b31d007a48/bitstreams |
 
-## Big-F-Item requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Big-F-Item requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
 | 12KB | 0 | /spring-rest/api/core/collections/8ce7fe68-b528-4c4f-964b-5303972f7891/license |
 | 6KB | .01 | /19.client.js |
 
-## Big-G-ItemFull requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Big-G-ItemFull requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |

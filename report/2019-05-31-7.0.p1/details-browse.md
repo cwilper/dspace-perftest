@@ -1,6 +1,12 @@
-# Browse session details
+# "Browse" session details
 
-Transaction | Requests | Bytes | Seconds | Request details
+The following numbers are averages observed during the first five minutes of the test, which
+was single-threaded.
+
+For detailed information about the user activities associated with each "transaction" below,
+see [../../doc/sessions](Sessions, transactions, and requests).
+
+Transaction | Requests | Bytes/transaction | Seconds/transaction | Request details
 -|-|-|-|-
 Browse-A-Home | 33 | 3.0MB | 7.82 | [See below](#browse-a-home-requests)
 Browse-B-ByTitleBig20 | 2 | 1.1MB | 4.16 | [See below](#browse-b-bytitlebig20-requests)
@@ -9,7 +15,13 @@ Browse-D-ByTitleSmall100 | 1 | 1.7MB | 4.09 | [See below](#browse-d-bytitlesmall
 Browse-E-SmallItem | 5 | 44KB | .29 | [See below](#browse-e-smallitem-requests)
 Browse-F-SmallDownload | 3 | 49KB | .17 | [See below](#browse-f-smalldownload-requests)
 
-## Browse-A-Home requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Browse-A-Home requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
@@ -47,26 +59,50 @@ Browse-F-SmallDownload | 3 | 49KB | .17 | [See below](#browse-f-smalldownload-re
 | 412 bytes | .32 | /spring-rest/api/core/communities/cb26f292-e77b-496f-a125-bb00dfaa801f/logo |
 | 413 bytes | .29 | /spring-rest/api/core/communities/9bc3115a-1d35-4bce-9129-760ce1e36503/logo |
 
-## Browse-B-ByTitleBig20 requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Browse-B-ByTitleBig20 requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
 | 3KB | .02 | /spring-rest/api/discover/browses |
 | **1.1MB** | **4.14** | /spring-rest/api/discover/browses/title/items?sort=dc.title%2CASC&page=0&size=20 |
 
-## Browse-C-ByTitleBig100 requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Browse-C-ByTitleBig100 requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
 | **5.6MB** | **27.04** | /spring-rest/api/discover/browses/title/items?sort=dc.title%2CASC&page=0&size=100 |
 
-## Browse-D-ByTitleSmall100 requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Browse-D-ByTitleSmall100 requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
 | **1.7MB** | **4.09** | /spring-rest/api/discover/browses/title/items?sort=dc.title%2CASC&page=0&size=100&startsWith=S |
 
-## Browse-E-SmallItem requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Browse-E-SmallItem requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
@@ -76,7 +112,13 @@ Browse-F-SmallDownload | 3 | 49KB | .17 | [See below](#browse-f-smalldownload-re
 | 413 bytes | .01 | /spring-rest/api/core/collections/7dca3c38-683c-412d-87a5-4a26b74b4abe/logo |
 | 6KB | 0 | /19.client.js |
 
-## Browse-F-SmallDownload requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Browse-F-SmallDownload requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |

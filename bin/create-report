@@ -14,6 +14,9 @@ main() {
     _output_dir="$tests_dir/$version/output"
     require_file $(outfile samples.jtl)
   fi
+  # source config used with run
+  . $(outfile plan.cfg)
+  [[ $report_name ]] || die "Please define report_name in plan.cfg first"
   create_csvs
   create_pngs
   create_md
@@ -110,7 +113,6 @@ create_pngs() {
   generate_png ResponseTimesOverTime home home
   generate_png ThreadsStateOverTime hits threads
   generate_png ResponseCodesPerSecond hits codes
-  generate_png HitsPerSecond hits hits
   for name in cpu database memory; do
     [[ -f $(outfile $name.csv) ]] && generate_png PerfMon $name $name
   done
@@ -127,7 +129,7 @@ generate_png() {
     warn "PNG already exists; not regenerating"
     return
   fi
-  "$_cmd" --plugin-type $plugin_type --line-weight 1 --width 1366 --height 768 --input-jtl "$csv" --generate-png "$png" > $logfile 2>&1 || local failed=true
+  "$_cmd" --plugin-type $plugin_type --line-weight 2 --width 1366 --height 768 --input-jtl "$csv" --granulation 10000 --generate-png "$png" > $logfile 2>&1 || local failed=true
   if [[ $failed ]]; then
     cat "$logfile"
     rm "$logfile"
@@ -211,9 +213,29 @@ create_md() {
   done < <(cat $jtl)
 
   cat > $md << EOF
-# DSpace performance test report
+# $report_name
+
+During this test, the number of concurrent threads was doubled every five minutes, starting with one thread
+for the first five minutes, peaking at 32 threads, and ramping back down to a single thread for a few minutes
+to end the test.
+
+![](threads.png)
+
+For detailed information about the user activities modeled in this test,
+see [../../doc/sessions](Sessions, transactions, and requests).
 
 ## Single-threaded results
+
+During the first 5 minutes of the test, only a single thread was used to make all requests,
+so the server only had to handle one request at a time. This put an artificially LOW load on the server,
+while providing an average "best case" roundtrip time per request.
+
+**IMPORTANT: single-threaded != single-user**
+
+The seconds/session numbers reported below are computed by adding all delays for loading
+each resource for each page. A real browser would spend less time waiting for all resources
+to load due to parallel loading of resources.  So, while helpful in understanding the overall
+performance picture, **the following numbers do not accurately reflect expected page wait times**.
 
 Session | Pages/session | Bytes/session | Seconds/session | Transaction details
 -|-|-|-|-
@@ -261,21 +283,18 @@ EOF
 
     cat >> $md << EOF
 
-## Multi-threaded results
+## Test results over time
 
-### Concurrent threads
-
-![](threads.png)
+The following graphs show how certain measurements changed over the lifetime of the test.
 
 ### Homepage load time
 
+This shows how the average time to load all home page resources, back-to-back, changed over the life of the test,
+depending on how many threads were active.
+
 ![](home.png)
 
-### Overall hit rate
-
-![](hits.png)
-
-### Response codes
+### Responses/sec by status code
 
 ![](codes.png)
 
@@ -297,9 +316,15 @@ EOF
     md=$(outfile details-${session_name,,}.md)
     report "-> $md"
     cat > $md << EOF
-# $session_name session details
+# "$session_name" session details
 
-Transaction | Requests | Bytes | Seconds | Request details
+The following numbers are averages observed during the first five minutes of the test, which
+was single-threaded.
+
+For detailed information about the user activities associated with each "transaction" below,
+see [../../doc/sessions](Sessions, transactions, and requests).
+
+Transaction | Requests | Bytes/transaction | Seconds/transaction | Request details
 -|-|-|-|-
 EOF
 
@@ -347,7 +372,13 @@ EOF
         local avg_bytes=$((${total_bytes_by_page_name[$page_name]} / $num_samples))
         cat >> $md << EOF
 
-## $page_name requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### $page_name requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |

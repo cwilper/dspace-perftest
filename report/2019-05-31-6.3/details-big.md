@@ -1,6 +1,12 @@
-# Big session details
+# "Big" session details
 
-Transaction | Requests | Bytes | Seconds | Request details
+The following numbers are averages observed during the first five minutes of the test, which
+was single-threaded.
+
+For detailed information about the user activities associated with each "transaction" below,
+see [../../doc/sessions](Sessions, transactions, and requests).
+
+Transaction | Requests | Bytes/transaction | Seconds/transaction | Request details
 -|-|-|-|-
 Big-A-Home | 11 | 694KB | .46 | [See below](#big-a-home-requests)
 Big-B-Community | 1 | 41KB | 1.16 | [See below](#big-b-community-requests)
@@ -10,7 +16,13 @@ Big-E-Recent | 1 | 32KB | .53 | [See below](#big-e-recent-requests)
 Big-F-Item | 2 | 25KB | .90 | [See below](#big-f-item-requests)
 Big-G-ItemFull | 1 | 16KB | .91 | [See below](#big-g-itemfull-requests)
 
-## Big-A-Home requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Big-A-Home requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
@@ -26,38 +38,74 @@ Big-G-ItemFull | 1 | 16KB | .91 | [See below](#big-g-itemfull-requests)
 | 4KB | 0 | /themes/Mirage2/images/apple-touch-icon.png |
 | 738 bytes | 0 | /themes/Mirage2/images/favicon.ico |
 
-## Big-B-Community requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Big-B-Community requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
 | 41KB | **1.16** | /handle/123456789/1 |
 
-## Big-C-Subcommunity requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Big-C-Subcommunity requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
 | 42KB | .75 | /handle/123456789/2 |
 
-## Big-D-Collection requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Big-D-Collection requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
 | 39KB | .63 | /handle/123456789/3 |
 
-## Big-E-Recent requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Big-E-Recent requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
 | 32KB | .53 | /handle/123456789/3/recent-submissions |
 
-## Big-F-Item requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Big-F-Item requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
 | 15KB | .79 | /handle/123456789/388 |
 | 9KB | .10 | /bitstream/handle/123456789/388/text.pdf.jpg?sequence=103&isAllowed=y |
 
-## Big-G-ItemFull requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Big-G-ItemFull requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |

@@ -1,6 +1,12 @@
-# Tiny session details
+# "Tiny" session details
 
-Transaction | Requests | Bytes | Seconds | Request details
+The following numbers are averages observed during the first five minutes of the test, which
+was single-threaded.
+
+For detailed information about the user activities associated with each "transaction" below,
+see [../../doc/sessions](Sessions, transactions, and requests).
+
+Transaction | Requests | Bytes/transaction | Seconds/transaction | Request details
 -|-|-|-|-
 Tiny-A-Home | 33 | 3.0MB | 7.45 | [See below](#tiny-a-home-requests)
 Tiny-B-Community | 8 | 3KB | .34 | [See below](#tiny-b-community-requests)
@@ -10,7 +16,13 @@ Tiny-E-Recent | 16 | 101KB | .37 | [See below](#tiny-e-recent-requests)
 Tiny-F-Item | 2 | 18KB | .01 | [See below](#tiny-f-item-requests)
 Tiny-G-ItemFull | 1 | 12KB | 0 | [See below](#tiny-g-itemfull-requests)
 
-## Tiny-A-Home requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Tiny-A-Home requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
@@ -48,7 +60,13 @@ Tiny-G-ItemFull | 1 | 12KB | 0 | [See below](#tiny-g-itemfull-requests)
 | 412 bytes | .30 | /spring-rest/api/core/communities/9bc3115a-1d35-4bce-9129-760ce1e36503/logo |
 | 413 bytes | .25 | /spring-rest/api/core/communities/02f7521c-b14f-41eb-9557-c3112f932800/logo |
 
-## Tiny-B-Community requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Tiny-B-Community requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
@@ -61,7 +79,13 @@ Tiny-G-ItemFull | 1 | 12KB | 0 | [See below](#tiny-g-itemfull-requests)
 | 412 bytes | .05 | /spring-rest/api/core/communities/fef6e7ef-4eb2-4d8e-a200-ab05ef1ba9dc/logo |
 | 412 bytes | .03 | /spring-rest/api/core/communities/1dc7bf6c-c4ce-44a6-92a2-b97d2bd88d06/logo |
 
-## Tiny-C-Subcommunity requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Tiny-C-Subcommunity requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
@@ -84,7 +108,13 @@ Tiny-G-ItemFull | 1 | 12KB | 0 | [See below](#tiny-g-itemfull-requests)
 | 413 bytes | .01 | /spring-rest/api/core/collections/51e83536-4dca-4aee-be7d-46b18ac597f8/logo |
 | 412 bytes | .01 | /spring-rest/api/core/collections/7b89999f-3478-4bfc-b223-148a9cc93435/logo |
 
-## Tiny-D-Collection requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Tiny-D-Collection requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
@@ -108,7 +138,13 @@ Tiny-G-ItemFull | 1 | 12KB | 0 | [See below](#tiny-g-itemfull-requests)
 | 2KB | .01 | /spring-rest/api/core/items/8ffa40ef-27ce-44bd-b72e-7d6261501a2a/bitstreams |
 | 2KB | .02 | /spring-rest/api/core/items/8ffa40ef-27ce-44bd-b72e-7d6261501a2a/owningCollection |
 
-## Tiny-E-Recent requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Tiny-E-Recent requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
@@ -129,14 +165,26 @@ Tiny-G-ItemFull | 1 | 12KB | 0 | [See below](#tiny-g-itemfull-requests)
 | 754 bytes | .01 | /spring-rest/api/core/items/1760782f-a0c1-4ad4-a1a1-254115b418be/relationships |
 | 2KB | .01 | /spring-rest/api/core/items/1760782f-a0c1-4ad4-a1a1-254115b418be/bitstreams |
 
-## Tiny-F-Item requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Tiny-F-Item requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
 | 12KB | 0 | /spring-rest/api/core/collections/7c906184-7b9e-4619-be0f-3bf5958f1220/license |
 | 6KB | .01 | /19.client.js |
 
-## Tiny-G-ItemFull requests
+## Transaction details
+
+The following tables show average number of bytes and seconds per request, observed during the
+single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
+looking into in more detail.
+
+### Tiny-G-ItemFull requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |

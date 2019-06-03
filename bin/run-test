@@ -23,6 +23,7 @@ run_test() {
   else
     bold "Starting jmeter run at $(date)"
     mkdir "$_output_dir"
+    cp $cfg_file $_output_dir/
     cd "$_test_dir"
     jmeter -n -q "$cfg_file" -t "$plan_file" -l output/samples.jtl || local failed=true
     mv jmeter.log output/
