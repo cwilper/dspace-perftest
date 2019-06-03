@@ -1,26 +1,68 @@
 # "Big" session details
 
-The following numbers are averages observed during the first five minutes of the test, which
-was single-threaded.
+The following numbers are averages observed during the initial single-threaded phase of the test.
 
 For detailed information about the user activities associated with each "transaction" below,
-see [../../doc/sessions](Sessions, transactions, and requests).
+see [Sessions, transactions, and requests](../../doc/sessions).
 
 Transaction | Requests | Bytes/transaction | Seconds/transaction | Request details
 -|-|-|-|-
 Big-A-Home | 33 | 3.0MB | 9.71 | [See below](#big-a-home-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Big-B-Community | 8 | 3KB | .40 | [See below](#big-b-community-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Big-C-Subcommunity | 18 | 114KB | .26 | [See below](#big-c-subcommunity-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Big-D-Collection | 19 | 547KB | 5.20 | [See below](#big-d-collection-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Big-E-Recent | 16 | 527KB | 4.91 | [See below](#big-e-recent-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Big-F-Item | 2 | 18KB | .02 | [See below](#big-f-item-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Big-G-ItemFull | 1 | 12KB | 0 | [See below](#big-g-itemfull-requests)
 
-## Transaction details
+## Request details
 
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 
 ### Big-A-Home requests
 
@@ -60,12 +102,6 @@ looking into in more detail.
 | 412 bytes | .47 | /spring-rest/api/core/communities/02f7521c-b14f-41eb-9557-c3112f932800/logo |
 | 413 bytes | .35 | /spring-rest/api/core/communities/edb3df48-cba7-4c27-b573-50906be42a5f/logo |
 
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
-
 ### Big-B-Community requests
 
 | Bytes/request | Seconds/request | Path |
@@ -78,12 +114,6 @@ looking into in more detail.
 | 412 bytes | .05 | /spring-rest/api/core/communities/477baf81-de71-4a4d-81ce-ac64b2a6819e/logo |
 | 412 bytes | .04 | /spring-rest/api/core/communities/82ce68a0-f9c7-4faa-ba41-87cb48d72952/logo |
 | 412 bytes | .03 | /spring-rest/api/core/communities/4643ed40-961a-43fb-a716-6ddf0753d3b4/logo |
-
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
 
 ### Big-C-Subcommunity requests
 
@@ -107,12 +137,6 @@ looking into in more detail.
 | 413 bytes | .01 | /spring-rest/api/core/collections/a9e268f3-3db6-4650-8469-af423ce2af90/logo |
 | 12KB | 0 | /spring-rest/api/core/collections/1dccf6fd-5bda-4140-a1ee-ccd428504b95/license |
 | 413 bytes | .01 | /spring-rest/api/core/collections/1dccf6fd-5bda-4140-a1ee-ccd428504b95/logo |
-
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
 
 ### Big-D-Collection requests
 
@@ -138,12 +162,6 @@ looking into in more detail.
 | 754 bytes | .21 | /spring-rest/api/core/items/8260d47e-d1be-44d3-b401-abfd92b37085/relationships |
 | 33KB | .22 | /spring-rest/api/core/items/8260d47e-d1be-44d3-b401-abfd92b37085/bitstreams |
 
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
-
 ### Big-E-Recent requests
 
 | Bytes/request | Seconds/request | Path |
@@ -165,24 +183,12 @@ looking into in more detail.
 | 754 bytes | .26 | /spring-rest/api/core/items/19e65090-c15d-40e4-b098-f8b31d007a48/relationships |
 | 33KB | .27 | /spring-rest/api/core/items/19e65090-c15d-40e4-b098-f8b31d007a48/bitstreams |
 
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
-
 ### Big-F-Item requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
 | 12KB | 0 | /spring-rest/api/core/collections/8ce7fe68-b528-4c4f-964b-5303972f7891/license |
 | 6KB | .01 | /19.client.js |
-
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
 
 ### Big-G-ItemFull requests
 

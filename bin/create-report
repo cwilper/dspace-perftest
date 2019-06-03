@@ -222,20 +222,20 @@ to end the test.
 ![](threads.png)
 
 For detailed information about the user activities modeled in this test,
-see [../../doc/sessions](Sessions, transactions, and requests).
+see [Sessions, transactions, and requests](../../doc/sessions).
 
 ## Single-threaded results
 
-During the first 5 minutes of the test, only a single thread was used to make all requests,
-so the server only had to handle one request at a time. This put an artificially LOW load on the server,
-while providing an average "best case" roundtrip time per request.
+During the first 5 minutes of the test, a single thread was used to make all requests,
+so the server only had to handle one request at a time. This put an artificially low load on the server,
+while providing an average "best case" roundtrip time number per request.
 
 **IMPORTANT: single-threaded != single-user**
 
-The seconds/session numbers reported below are computed by adding all delays for loading
+The seconds/session numbers reported below were computed by adding all delays for loading
 each resource for each page. A real browser would spend less time waiting for all resources
 to load due to parallel loading of resources.  So, while helpful in understanding the overall
-performance picture, **the following numbers do not accurately reflect expected page wait times**.
+performance picture, **the seconds/session numbers do not accurately reflect expected page wait times**.
 
 Session | Pages/session | Bytes/session | Seconds/session | Transaction details
 -|-|-|-|-
@@ -318,11 +318,10 @@ EOF
     cat > $md << EOF
 # "$session_name" session details
 
-The following numbers are averages observed during the first five minutes of the test, which
-was single-threaded.
+The following numbers are averages observed during the initial single-threaded phase of the test.
 
 For detailed information about the user activities associated with each "transaction" below,
-see [../../doc/sessions](Sessions, transactions, and requests).
+see [Sessions, transactions, and requests](../../doc/sessions).
 
 Transaction | Requests | Bytes/transaction | Seconds/transaction | Request details
 -|-|-|-|-
@@ -348,6 +347,13 @@ EOF
         local avg_bytes=$((${total_bytes_by_page_name[$page_name]} / $num_samples))
         cat >> $md << EOF
 $page_name | ${#names_for_page[@]} | $(pretty_bytes $avg_bytes) | $(bc<<<"scale=2;${avg_ms}/1000") | [See below](#${page_name,,}-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 EOF
       fi
     done
@@ -371,12 +377,6 @@ EOF
         local avg_ms=$((${total_ms_by_page_name[$page_name]} / $num_samples))
         local avg_bytes=$((${total_bytes_by_page_name[$page_name]} / $num_samples))
         cat >> $md << EOF
-
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
 
 ### $page_name requests
 

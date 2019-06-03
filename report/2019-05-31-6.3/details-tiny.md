@@ -1,26 +1,68 @@
 # "Tiny" session details
 
-The following numbers are averages observed during the first five minutes of the test, which
-was single-threaded.
+The following numbers are averages observed during the initial single-threaded phase of the test.
 
 For detailed information about the user activities associated with each "transaction" below,
-see [../../doc/sessions](Sessions, transactions, and requests).
+see [Sessions, transactions, and requests](../../doc/sessions).
 
 Transaction | Requests | Bytes/transaction | Seconds/transaction | Request details
 -|-|-|-|-
 Tiny-A-Home | 11 | 694KB | .23 | [See below](#tiny-a-home-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Tiny-B-Community | 1 | 42KB | .76 | [See below](#tiny-b-community-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Tiny-C-Subcommunity | 1 | 42KB | .44 | [See below](#tiny-c-subcommunity-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Tiny-D-Collection | 1 | 39KB | .32 | [See below](#tiny-d-collection-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Tiny-E-Recent | 1 | 32KB | .24 | [See below](#tiny-e-recent-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Tiny-F-Item | 1 | 14KB | .15 | [See below](#tiny-f-item-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Tiny-G-ItemFull | 1 | 16KB | .17 | [See below](#tiny-g-itemfull-requests)
 
-## Transaction details
+## Request details
 
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 
 ### Tiny-A-Home requests
 
@@ -38,23 +80,11 @@ looking into in more detail.
 | 4KB | 0 | /themes/Mirage2/images/apple-touch-icon.png |
 | 738 bytes | 0 | /themes/Mirage2/images/favicon.ico |
 
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
-
 ### Tiny-B-Community requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
 | 42KB | .76 | /handle/123456789/244 |
-
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
 
 ### Tiny-C-Subcommunity requests
 
@@ -62,23 +92,11 @@ looking into in more detail.
 | - | - | - |
 | 42KB | .44 | /handle/123456789/245 |
 
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
-
 ### Tiny-D-Collection requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
 | 39KB | .32 | /handle/123456789/246 |
-
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
 
 ### Tiny-E-Recent requests
 
@@ -86,23 +104,11 @@ looking into in more detail.
 | - | - | - |
 | 32KB | .24 | /handle/123456789/246/recent-submissions |
 
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
-
 ### Tiny-F-Item requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
 | 14KB | .15 | /handle/123456789/33089 |
-
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
 
 ### Tiny-G-ItemFull requests
 

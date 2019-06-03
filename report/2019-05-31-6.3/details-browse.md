@@ -1,25 +1,60 @@
 # "Browse" session details
 
-The following numbers are averages observed during the first five minutes of the test, which
-was single-threaded.
+The following numbers are averages observed during the initial single-threaded phase of the test.
 
 For detailed information about the user activities associated with each "transaction" below,
-see [../../doc/sessions](Sessions, transactions, and requests).
+see [Sessions, transactions, and requests](../../doc/sessions).
 
 Transaction | Requests | Bytes/transaction | Seconds/transaction | Request details
 -|-|-|-|-
 Browse-A-Home | 11 | 694KB | .40 | [See below](#browse-a-home-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Browse-B-ByTitleBig20 | 1 | 43KB | 3.55 | [See below](#browse-b-bytitlebig20-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Browse-C-ByTitleBig100 | 1 | 126KB | 14.57 | [See below](#browse-c-bytitlebig100-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Browse-D-ByTitleSmall100 | 1 | 126KB | 5.63 | [See below](#browse-d-bytitlesmall100-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Browse-E-SmallItem | 2 | 25KB | .27 | [See below](#browse-e-smallitem-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Browse-F-SmallDownload | 2 | 11KB | .10 | [See below](#browse-f-smalldownload-requests)
 
-## Transaction details
+## Request details
 
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 
 ### Browse-A-Home requests
 
@@ -37,23 +72,11 @@ looking into in more detail.
 | 738 bytes | .01 | /themes/Mirage2/images/favicon.ico |
 | 4KB | 0 | /themes/Mirage2/images/apple-touch-icon.png |
 
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
-
 ### Browse-B-ByTitleBig20 requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
 | 43KB | **3.55** | /browse?type=title |
-
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
 
 ### Browse-C-ByTitleBig100 requests
 
@@ -61,23 +84,11 @@ looking into in more detail.
 | - | - | - |
 | 126KB | **14.57** | /browse?resetOffset=true |
 
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
-
 ### Browse-D-ByTitleSmall100 requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
 | 126KB | **5.63** | /browse?rpp=100&sort_by=1&type=title&etal=-1&starts_with=S&order=ASC |
-
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
 
 ### Browse-E-SmallItem requests
 
@@ -85,12 +96,6 @@ looking into in more detail.
 | - | - | - |
 | 15KB | .24 | /handle/123456789/31570 |
 | 9KB | .03 | /bitstream/handle/123456789/31570/text.pdf.jpg?sequence=4&isAllowed=y |
-
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
 
 ### Browse-F-SmallDownload requests
 

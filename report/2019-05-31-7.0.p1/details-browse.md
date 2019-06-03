@@ -1,25 +1,60 @@
 # "Browse" session details
 
-The following numbers are averages observed during the first five minutes of the test, which
-was single-threaded.
+The following numbers are averages observed during the initial single-threaded phase of the test.
 
 For detailed information about the user activities associated with each "transaction" below,
-see [../../doc/sessions](Sessions, transactions, and requests).
+see [Sessions, transactions, and requests](../../doc/sessions).
 
 Transaction | Requests | Bytes/transaction | Seconds/transaction | Request details
 -|-|-|-|-
 Browse-A-Home | 33 | 3.0MB | 7.82 | [See below](#browse-a-home-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Browse-B-ByTitleBig20 | 2 | 1.1MB | 4.16 | [See below](#browse-b-bytitlebig20-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Browse-C-ByTitleBig100 | 1 | 5.6MB | 29.15 | [See below](#browse-c-bytitlebig100-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Browse-D-ByTitleSmall100 | 1 | 1.7MB | 4.09 | [See below](#browse-d-bytitlesmall100-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Browse-E-SmallItem | 5 | 44KB | .29 | [See below](#browse-e-smallitem-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Browse-F-SmallDownload | 3 | 49KB | .17 | [See below](#browse-f-smalldownload-requests)
 
-## Transaction details
+## Request details
 
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 
 ### Browse-A-Home requests
 
@@ -59,12 +94,6 @@ looking into in more detail.
 | 412 bytes | .32 | /spring-rest/api/core/communities/cb26f292-e77b-496f-a125-bb00dfaa801f/logo |
 | 413 bytes | .29 | /spring-rest/api/core/communities/9bc3115a-1d35-4bce-9129-760ce1e36503/logo |
 
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
-
 ### Browse-B-ByTitleBig20 requests
 
 | Bytes/request | Seconds/request | Path |
@@ -72,35 +101,17 @@ looking into in more detail.
 | 3KB | .02 | /spring-rest/api/discover/browses |
 | **1.1MB** | **4.14** | /spring-rest/api/discover/browses/title/items?sort=dc.title%2CASC&page=0&size=20 |
 
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
-
 ### Browse-C-ByTitleBig100 requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
 | **5.6MB** | **27.04** | /spring-rest/api/discover/browses/title/items?sort=dc.title%2CASC&page=0&size=100 |
 
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
-
 ### Browse-D-ByTitleSmall100 requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
 | **1.7MB** | **4.09** | /spring-rest/api/discover/browses/title/items?sort=dc.title%2CASC&page=0&size=100&startsWith=S |
-
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
 
 ### Browse-E-SmallItem requests
 
@@ -111,12 +122,6 @@ looking into in more detail.
 | 12KB | 0 | /spring-rest/api/core/collections/7dca3c38-683c-412d-87a5-4a26b74b4abe/license |
 | 413 bytes | .01 | /spring-rest/api/core/collections/7dca3c38-683c-412d-87a5-4a26b74b4abe/logo |
 | 6KB | 0 | /19.client.js |
-
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
 
 ### Browse-F-SmallDownload requests
 

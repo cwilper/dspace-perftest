@@ -1,24 +1,52 @@
 # "Search" session details
 
-The following numbers are averages observed during the first five minutes of the test, which
-was single-threaded.
+The following numbers are averages observed during the initial single-threaded phase of the test.
 
 For detailed information about the user activities associated with each "transaction" below,
-see [../../doc/sessions](Sessions, transactions, and requests).
+see [Sessions, transactions, and requests](../../doc/sessions).
 
 Transaction | Requests | Bytes/transaction | Seconds/transaction | Request details
 -|-|-|-|-
 Search-A-Home | 33 | 3.0MB | 7.76 | [See below](#search-a-home-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Search-B-GlobalSearch | 41 | 1.4MB | 3.65 | [See below](#search-b-globalsearch-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Search-C-FilterAuthor | 33 | 455KB | 2.02 | [See below](#search-c-filterauthor-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Search-D-MediumItem | 4 | 28KB | .06 | [See below](#search-d-mediumitem-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Search-E-MediumDownload | 3 | 89KB | .14 | [See below](#search-e-mediumdownload-requests)
 
-## Transaction details
+## Request details
 
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 
 ### Search-A-Home requests
 
@@ -57,12 +85,6 @@ looking into in more detail.
 | 412 bytes | .30 | /spring-rest/api/core/communities/cb26f292-e77b-496f-a125-bb00dfaa801f/logo |
 | 412 bytes | .34 | /spring-rest/api/core/communities/9bc3115a-1d35-4bce-9129-760ce1e36503/logo |
 | 413 bytes | .26 | /spring-rest/api/core/communities/02f7521c-b14f-41eb-9557-c3112f932800/logo |
-
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
 
 ### Search-B-GlobalSearch requests
 
@@ -110,12 +132,6 @@ looking into in more detail.
 | 754 bytes | .02 | /spring-rest/api/core/items/bc570b4b-8fbe-4ec8-bbb4-df88cf58fb9d/relationships |
 | 2KB | .02 | /spring-rest/api/core/items/bc570b4b-8fbe-4ec8-bbb4-df88cf58fb9d/owningCollection |
 
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
-
 ### Search-C-FilterAuthor requests
 
 | Bytes/request | Seconds/request | Path |
@@ -154,12 +170,6 @@ looking into in more detail.
 | 2KB | .05 | /spring-rest/api/core/items/a8382b9c-c490-4ef8-83ec-8dd1cfbcb1f7/owningCollection |
 | 8KB | .04 | /spring-rest/api/core/items/a8382b9c-c490-4ef8-83ec-8dd1cfbcb1f7/bitstreams |
 
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
-
 ### Search-D-MediumItem requests
 
 | Bytes/request | Seconds/request | Path |
@@ -168,12 +178,6 @@ looking into in more detail.
 | 12KB | 0 | /spring-rest/api/core/collections/99271823-a59b-4b26-b90b-1e5cc099c2fa/license |
 | 413 bytes | .01 | /spring-rest/api/core/collections/99271823-a59b-4b26-b90b-1e5cc099c2fa/logo |
 | 6KB | 0 | /19.client.js |
-
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
 
 ### Search-E-MediumDownload requests
 

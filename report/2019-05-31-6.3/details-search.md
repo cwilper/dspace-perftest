@@ -1,24 +1,52 @@
 # "Search" session details
 
-The following numbers are averages observed during the first five minutes of the test, which
-was single-threaded.
+The following numbers are averages observed during the initial single-threaded phase of the test.
 
 For detailed information about the user activities associated with each "transaction" below,
-see [../../doc/sessions](Sessions, transactions, and requests).
+see [Sessions, transactions, and requests](../../doc/sessions).
 
 Transaction | Requests | Bytes/transaction | Seconds/transaction | Request details
 -|-|-|-|-
 Search-A-Home | 11 | 694KB | .23 | [See below](#search-a-home-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Search-B-GlobalSearch | 4 | 57KB | .52 | [See below](#search-b-globalsearch-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Search-C-FilterAuthor | 10 | 125KB | .71 | [See below](#search-c-filterauthor-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Search-D-MediumItem | 1 | 15KB | .27 | [See below](#search-d-mediumitem-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Search-E-MediumDownload | 2 | 31KB | .13 | [See below](#search-e-mediumdownload-requests)
 
-## Transaction details
+## Request details
 
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 
 ### Search-A-Home requests
 
@@ -36,12 +64,6 @@ looking into in more detail.
 | 4KB | 0 | /themes/Mirage2/images/apple-touch-icon.png |
 | 738 bytes | .01 | /themes/Mirage2/images/favicon.ico |
 
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
-
 ### Search-B-GlobalSearch requests
 
 | Bytes/request | Seconds/request | Path |
@@ -50,12 +72,6 @@ looking into in more detail.
 | 1KB | .01 | /static/js/discovery/discovery-results.js |
 | 9KB | .03 | /bitstream/handle/123456789/22826/text.pdf.jpg?sequence=4&isAllowed=y |
 | 9KB | .03 | /bitstream/handle/123456789/29601/text.pdf.jpg?sequence=4&isAllowed=y |
-
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
 
 ### Search-C-FilterAuthor requests
 
@@ -72,23 +88,11 @@ looking into in more detail.
 | 9KB | .03 | /bitstream/handle/123456789/25059/text.pdf.jpg?sequence=4&isAllowed=y |
 | 9KB | .03 | /bitstream/handle/123456789/19822/text.pdf.jpg?sequence=4&isAllowed=y |
 
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
-
 ### Search-D-MediumItem requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
 | 15KB | .27 | /handle/123456789/8988 |
-
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
 
 ### Search-E-MediumDownload requests
 

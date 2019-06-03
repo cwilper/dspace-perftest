@@ -1,26 +1,68 @@
 # "Tiny" session details
 
-The following numbers are averages observed during the first five minutes of the test, which
-was single-threaded.
+The following numbers are averages observed during the initial single-threaded phase of the test.
 
 For detailed information about the user activities associated with each "transaction" below,
-see [../../doc/sessions](Sessions, transactions, and requests).
+see [Sessions, transactions, and requests](../../doc/sessions).
 
 Transaction | Requests | Bytes/transaction | Seconds/transaction | Request details
 -|-|-|-|-
 Tiny-A-Home | 33 | 3.0MB | 7.45 | [See below](#tiny-a-home-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Tiny-B-Community | 8 | 3KB | .34 | [See below](#tiny-b-community-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Tiny-C-Subcommunity | 18 | 114KB | .24 | [See below](#tiny-c-subcommunity-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Tiny-D-Collection | 19 | 120KB | .52 | [See below](#tiny-d-collection-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Tiny-E-Recent | 16 | 101KB | .37 | [See below](#tiny-e-recent-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Tiny-F-Item | 2 | 18KB | .01 | [See below](#tiny-f-item-requests)
+
+## Request details
+
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 Tiny-G-ItemFull | 1 | 12KB | 0 | [See below](#tiny-g-itemfull-requests)
 
-## Transaction details
+## Request details
 
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
+The following tables show average number of bytes and seconds per request.
+
+Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
+
 
 ### Tiny-A-Home requests
 
@@ -60,12 +102,6 @@ looking into in more detail.
 | 412 bytes | .30 | /spring-rest/api/core/communities/9bc3115a-1d35-4bce-9129-760ce1e36503/logo |
 | 413 bytes | .25 | /spring-rest/api/core/communities/02f7521c-b14f-41eb-9557-c3112f932800/logo |
 
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
-
 ### Tiny-B-Community requests
 
 | Bytes/request | Seconds/request | Path |
@@ -78,12 +114,6 @@ looking into in more detail.
 | 412 bytes | .04 | /spring-rest/api/core/communities/f468d990-f14a-4742-8fb2-170f3a36c997/logo |
 | 412 bytes | .05 | /spring-rest/api/core/communities/fef6e7ef-4eb2-4d8e-a200-ab05ef1ba9dc/logo |
 | 412 bytes | .03 | /spring-rest/api/core/communities/1dc7bf6c-c4ce-44a6-92a2-b97d2bd88d06/logo |
-
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
 
 ### Tiny-C-Subcommunity requests
 
@@ -107,12 +137,6 @@ looking into in more detail.
 | 12KB | .01 | /spring-rest/api/core/collections/7b89999f-3478-4bfc-b223-148a9cc93435/license |
 | 413 bytes | .01 | /spring-rest/api/core/collections/51e83536-4dca-4aee-be7d-46b18ac597f8/logo |
 | 412 bytes | .01 | /spring-rest/api/core/collections/7b89999f-3478-4bfc-b223-148a9cc93435/logo |
-
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
 
 ### Tiny-D-Collection requests
 
@@ -138,12 +162,6 @@ looking into in more detail.
 | 2KB | .01 | /spring-rest/api/core/items/8ffa40ef-27ce-44bd-b72e-7d6261501a2a/bitstreams |
 | 2KB | .02 | /spring-rest/api/core/items/8ffa40ef-27ce-44bd-b72e-7d6261501a2a/owningCollection |
 
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
-
 ### Tiny-E-Recent requests
 
 | Bytes/request | Seconds/request | Path |
@@ -165,24 +183,12 @@ looking into in more detail.
 | 754 bytes | .01 | /spring-rest/api/core/items/1760782f-a0c1-4ad4-a1a1-254115b418be/relationships |
 | 2KB | .01 | /spring-rest/api/core/items/1760782f-a0c1-4ad4-a1a1-254115b418be/bitstreams |
 
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
-
 ### Tiny-F-Item requests
 
 | Bytes/request | Seconds/request | Path |
 | - | - | - |
 | 12KB | 0 | /spring-rest/api/core/collections/7c906184-7b9e-4619-be0f-3bf5958f1220/license |
 | 6KB | .01 | /19.client.js |
-
-## Transaction details
-
-The following tables show average number of bytes and seconds per request, observed during the
-single-threaded phase of the test. Numbers **in bold** below are higher than most, and may be worth
-looking into in more detail.
 
 ### Tiny-G-ItemFull requests
 
