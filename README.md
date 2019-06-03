@@ -19,7 +19,7 @@ all dependent services running on the same host, all served over HTTPS using Apa
 were intentionally performed without any tuning (so, with out-of-box settings), in order to
 establish a baseline for comparison. Java processes were run with Java 8. Tomcat was launched with
 a 4GB max heap size. For DSpace 7, the Angular UI was built with out of box production settings, and
-was launched with PM2. 
+was launched with PM2.
 
 Requests were made and measurements were recorded on a separate host within the same availability zone.
 To aid in remote collection of server metrics, [Perfmon Server Agent](https://github.com/undera/perfmon-agent/)
@@ -30,11 +30,3 @@ one thread for the first five minutes, peaking at 32 threads, and ramping back d
 thread for five minutes to end the test:
 
 ![](report/2019-05-31-6.3/threads.png)
-
-**IMPORTANT:**
-
-* **The single-threaded phase of the test does NOT accurately simulate actual browser behavior** -- an actual
-  browser will make more concurrent requests of DSpace (after the initial HTML is received and parsed),
-  so, particularly for DSpace 7, _the overall wait time for the user will typically be less than the
-  recorded seconds/session_, while the load on the server will be higher.
-
