@@ -8,45 +8,10 @@ see [Sessions, transactions, and requests](../../doc/sessions).
 Transaction | Requests | Bytes/transaction | Seconds/transaction | Request details
 -|-|-|-|-
 Browse-A-Home | 33 | 3.0MB | 7.82 | [See below](#browse-a-home-requests)
-
-## Request details
-
-The following tables show average number of bytes and seconds per request.
-
-Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
-
 Browse-B-ByTitleBig20 | 2 | 1.1MB | 4.16 | [See below](#browse-b-bytitlebig20-requests)
-
-## Request details
-
-The following tables show average number of bytes and seconds per request.
-
-Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
-
 Browse-C-ByTitleBig100 | 1 | 5.6MB | 29.15 | [See below](#browse-c-bytitlebig100-requests)
-
-## Request details
-
-The following tables show average number of bytes and seconds per request.
-
-Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
-
 Browse-D-ByTitleSmall100 | 1 | 1.7MB | 4.09 | [See below](#browse-d-bytitlesmall100-requests)
-
-## Request details
-
-The following tables show average number of bytes and seconds per request.
-
-Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
-
 Browse-E-SmallItem | 5 | 44KB | .29 | [See below](#browse-e-smallitem-requests)
-
-## Request details
-
-The following tables show average number of bytes and seconds per request.
-
-Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
-
 Browse-F-SmallDownload | 3 | 49KB | .17 | [See below](#browse-f-smalldownload-requests)
 
 ## Request details

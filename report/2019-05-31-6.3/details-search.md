@@ -8,37 +8,9 @@ see [Sessions, transactions, and requests](../../doc/sessions).
 Transaction | Requests | Bytes/transaction | Seconds/transaction | Request details
 -|-|-|-|-
 Search-A-Home | 11 | 694KB | .23 | [See below](#search-a-home-requests)
-
-## Request details
-
-The following tables show average number of bytes and seconds per request.
-
-Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
-
 Search-B-GlobalSearch | 4 | 57KB | .52 | [See below](#search-b-globalsearch-requests)
-
-## Request details
-
-The following tables show average number of bytes and seconds per request.
-
-Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
-
 Search-C-FilterAuthor | 10 | 125KB | .71 | [See below](#search-c-filterauthor-requests)
-
-## Request details
-
-The following tables show average number of bytes and seconds per request.
-
-Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
-
 Search-D-MediumItem | 1 | 15KB | .27 | [See below](#search-d-mediumitem-requests)
-
-## Request details
-
-The following tables show average number of bytes and seconds per request.
-
-Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
-
 Search-E-MediumDownload | 2 | 31KB | .13 | [See below](#search-e-mediumdownload-requests)
 
 ## Request details

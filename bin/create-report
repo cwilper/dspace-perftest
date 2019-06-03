@@ -347,6 +347,11 @@ EOF
         local avg_bytes=$((${total_bytes_by_page_name[$page_name]} / $num_samples))
         cat >> $md << EOF
 $page_name | ${#names_for_page[@]} | $(pretty_bytes $avg_bytes) | $(bc<<<"scale=2;${avg_ms}/1000") | [See below](#${page_name,,}-requests)
+EOF
+      fi
+    done
+
+    cat >> $md << EOF
 
 ## Request details
 
@@ -355,8 +360,6 @@ The following tables show average number of bytes and seconds per request.
 Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
 
 EOF
-      fi
-    done
 
     for page_name in $(printf '%s\n' ${!page_names[@]} | sort); do
       if [[ $page_name =~ ^$session_name- ]]; then

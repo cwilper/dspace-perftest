@@ -8,53 +8,11 @@ see [Sessions, transactions, and requests](../../doc/sessions).
 Transaction | Requests | Bytes/transaction | Seconds/transaction | Request details
 -|-|-|-|-
 Tiny-A-Home | 33 | 3.0MB | 7.45 | [See below](#tiny-a-home-requests)
-
-## Request details
-
-The following tables show average number of bytes and seconds per request.
-
-Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
-
 Tiny-B-Community | 8 | 3KB | .34 | [See below](#tiny-b-community-requests)
-
-## Request details
-
-The following tables show average number of bytes and seconds per request.
-
-Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
-
 Tiny-C-Subcommunity | 18 | 114KB | .24 | [See below](#tiny-c-subcommunity-requests)
-
-## Request details
-
-The following tables show average number of bytes and seconds per request.
-
-Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
-
 Tiny-D-Collection | 19 | 120KB | .52 | [See below](#tiny-d-collection-requests)
-
-## Request details
-
-The following tables show average number of bytes and seconds per request.
-
-Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
-
 Tiny-E-Recent | 16 | 101KB | .37 | [See below](#tiny-e-recent-requests)
-
-## Request details
-
-The following tables show average number of bytes and seconds per request.
-
-Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
-
 Tiny-F-Item | 2 | 18KB | .01 | [See below](#tiny-f-item-requests)
-
-## Request details
-
-The following tables show average number of bytes and seconds per request.
-
-Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
-
 Tiny-G-ItemFull | 1 | 12KB | 0 | [See below](#tiny-g-itemfull-requests)
 
 ## Request details

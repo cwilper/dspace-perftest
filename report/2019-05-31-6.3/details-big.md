@@ -8,53 +8,11 @@ see [Sessions, transactions, and requests](../../doc/sessions).
 Transaction | Requests | Bytes/transaction | Seconds/transaction | Request details
 -|-|-|-|-
 Big-A-Home | 11 | 694KB | .46 | [See below](#big-a-home-requests)
-
-## Request details
-
-The following tables show average number of bytes and seconds per request.
-
-Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
-
 Big-B-Community | 1 | 41KB | 1.16 | [See below](#big-b-community-requests)
-
-## Request details
-
-The following tables show average number of bytes and seconds per request.
-
-Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
-
 Big-C-Subcommunity | 1 | 42KB | .75 | [See below](#big-c-subcommunity-requests)
-
-## Request details
-
-The following tables show average number of bytes and seconds per request.
-
-Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
-
 Big-D-Collection | 1 | 39KB | .63 | [See below](#big-d-collection-requests)
-
-## Request details
-
-The following tables show average number of bytes and seconds per request.
-
-Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
-
 Big-E-Recent | 1 | 32KB | .53 | [See below](#big-e-recent-requests)
-
-## Request details
-
-The following tables show average number of bytes and seconds per request.
-
-Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
-
 Big-F-Item | 2 | 25KB | .90 | [See below](#big-f-item-requests)
-
-## Request details
-
-The following tables show average number of bytes and seconds per request.
-
-Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may warrant further investigation.
-
 Big-G-ItemFull | 1 | 16KB | .91 | [See below](#big-g-itemfull-requests)
 
 ## Request details
