@@ -2,11 +2,11 @@
 
 This project provides JMeter tests, scripts, and documentation for running DSpace performance tests.
 
-Browse [the github repository](https://github.com/cwilper/dspace-perftest) for the JMeter (jmx) test files and
-raw jtl/csv test results for the tests listed below.
-
-See [Sessions, transactions, and requests](doc/sessions.md) for details on the user sessions that are
+Read [Sessions, transactions, and requests](doc/sessions.md) for details on the user sessions that are
 modeled for these tests.
+
+[Browse the github repository](https://github.com/cwilper/dspace-perftest) for the JMeter (jmx) test files and
+raw jtl/csv test results for the tests listed below.
 
 ## Baseline results
 
@@ -17,9 +17,13 @@ The above tests were performed on a single `m5a.large` EC2 instance (8GB RAM, 2 
 running Amazon Linux 2 (similar to CentOS 7), on a single magnetic EBS volume, with Postgres 10 and
 all dependent services running on the same host, all served over HTTPS using Apache. These initial tests
 were intentionally performed without any tuning (so, with out-of-box settings), in order to
-establish a baseline for comparison. Tomcat was launched with a 4GB max heap size.
+establish a baseline for comparison. Java processes were run with Java 8. Tomcat was launched with
+a 4GB max heap size. For DSpace 7, the Angular UI was built with out of box production settings, and
+was launched with PM2. 
 
 Requests were made and measurements were recorded on a separate host within the same availability zone.
+To aid in remote collection of server metrics, [Perfmon Server Agent](https://github.com/undera/perfmon-agent/)
+was used.
 
 During the tests, the number of concurrent threads was doubled every five minutes, starting with
 one thread for the first five minutes, peaking at 32 threads, and ramping back down to a single
@@ -29,8 +33,8 @@ thread for five minutes to end the test:
 
 **IMPORTANT:**
 
-* _The single-threaded phase of the test does NOT accurately simulate actual browser behavior_ -- an actual
+* **The single-threaded phase of the test does NOT accurately simulate actual browser behavior** -- an actual
   browser will make more concurrent requests of DSpace (after the initial HTML is received and parsed),
-  so, particularly for DSpace 7, **the overall wait time for the user will typically be less than the
-  recorded seconds/session**, while the load on the server will be higher.
+  so, particularly for DSpace 7, _the overall wait time for the user will typically be less than the
+  recorded seconds/session_, while the load on the server will be higher.
 
