@@ -25,51 +25,51 @@ Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may wa
 
 Samples | Bytes/request | Seconds/request | Path
 -|-|-|-
-10 | 21KB | .13 | / |
-10 | 51KB | 0 | /themes/Mirage2/vendor/modernizr/modernizr.js |
-10 | 143KB | 0 | /themes/Mirage2/styles/main.css |
-10 | 4KB | 0 | /themes/Mirage2/images/DSpace-logo-line.svg |
-10 | 2KB | 0 | /themes/Mirage2/images/atmire-logo-small.svg |
-10 | 1KB | 0 | /static/icons/feed.png |
-10 | 32KB | 0 | /themes/Mirage2/vendor/jquery-ui/themes/base/jquery-ui.css |
-10 | 408KB | .01 | /themes/Mirage2/scripts/theme.js |
-10 | 23KB | 0 | /themes/Mirage2/vendor/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.woff |
-10 | 4KB | 0 | /themes/Mirage2/images/apple-touch-icon.png |
-10 | 738 bytes | 0 | /themes/Mirage2/images/favicon.ico |
+10 | 21KB | .138 | / |
+10 | 51KB | .007 | /themes/Mirage2/vendor/modernizr/modernizr.js |
+10 | 143KB | .008 | /themes/Mirage2/styles/main.css |
+10 | 4KB | .005 | /themes/Mirage2/images/DSpace-logo-line.svg |
+10 | 2KB | .005 | /themes/Mirage2/images/atmire-logo-small.svg |
+10 | 1KB | .006 | /static/icons/feed.png |
+10 | 32KB | .007 | /themes/Mirage2/vendor/jquery-ui/themes/base/jquery-ui.css |
+10 | 408KB | .015 | /themes/Mirage2/scripts/theme.js |
+10 | 23KB | .005 | /themes/Mirage2/vendor/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.woff |
+10 | 4KB | .005 | /themes/Mirage2/images/apple-touch-icon.png |
+10 | 738 bytes | .009 | /themes/Mirage2/images/favicon.ico |
 
 ### Search-B-GlobalSearch requests
 
 Samples | Bytes/request | Seconds/request | Path
 -|-|-|-
-10 | 36KB | .30 | /discover |
-10 | 1KB | 0 | /static/js/discovery/discovery-results.js |
-10 | 9KB | .02 | /bitstream/handle/123456789/22826/text.pdf.jpg?sequence=4&isAllowed=y |
-10 | 9KB | .04 | /bitstream/handle/123456789/29601/text.pdf.jpg?sequence=4&isAllowed=y |
+10 | 36KB | .300 | /discover |
+10 | 1KB | .007 | /static/js/discovery/discovery-results.js |
+10 | 9KB | .024 | /bitstream/handle/123456789/22826/text.pdf.jpg?sequence=4&isAllowed=y |
+10 | 9KB | .049 | /bitstream/handle/123456789/29601/text.pdf.jpg?sequence=4&isAllowed=y |
 
 ### Search-C-FilterAuthor requests
 
 Samples | Bytes/request | Seconds/request | Path
 -|-|-|-
-10 | 38KB | .40 | /discover?query=attenuation&filtertype=author&filter_relational_operator=equals&filter=Bushy+Cylinder+Head |
-10 | 9KB | .02 | /bitstream/handle/123456789/31512/text.pdf.jpg?sequence=4&isAllowed=y |
-10 | 9KB | .02 | /bitstream/handle/123456789/8988/text.pdf.jpg?sequence=13&isAllowed=y |
-10 | 9KB | .02 | /bitstream/handle/123456789/26650/text.pdf.jpg?sequence=4&isAllowed=y |
-10 | 9KB | .02 | /bitstream/handle/123456789/31422/text.pdf.jpg?sequence=4&isAllowed=y |
-10 | 9KB | .02 | /bitstream/handle/123456789/13758/text.pdf.jpg?sequence=13&isAllowed=y |
-10 | 9KB | .02 | /bitstream/handle/123456789/19011/text.pdf.jpg?sequence=4&isAllowed=y |
-10 | 9KB | .02 | /bitstream/handle/123456789/18063/text.pdf.jpg?sequence=4&isAllowed=y |
-10 | 9KB | .02 | /bitstream/handle/123456789/25059/text.pdf.jpg?sequence=4&isAllowed=y |
-10 | 9KB | .03 | /bitstream/handle/123456789/19822/text.pdf.jpg?sequence=4&isAllowed=y |
+10 | 38KB | .400 | /discover?query=attenuation&filtertype=author&filter_relational_operator=equals&filter=Bushy+Cylinder+Head |
+10 | 9KB | .028 | /bitstream/handle/123456789/31512/text.pdf.jpg?sequence=4&isAllowed=y |
+10 | 9KB | .027 | /bitstream/handle/123456789/8988/text.pdf.jpg?sequence=13&isAllowed=y |
+10 | 9KB | .023 | /bitstream/handle/123456789/26650/text.pdf.jpg?sequence=4&isAllowed=y |
+10 | 9KB | .022 | /bitstream/handle/123456789/31422/text.pdf.jpg?sequence=4&isAllowed=y |
+10 | 9KB | .028 | /bitstream/handle/123456789/13758/text.pdf.jpg?sequence=13&isAllowed=y |
+10 | 9KB | .023 | /bitstream/handle/123456789/19011/text.pdf.jpg?sequence=4&isAllowed=y |
+10 | 9KB | .025 | /bitstream/handle/123456789/18063/text.pdf.jpg?sequence=4&isAllowed=y |
+10 | 9KB | .024 | /bitstream/handle/123456789/25059/text.pdf.jpg?sequence=4&isAllowed=y |
+10 | 9KB | .032 | /bitstream/handle/123456789/19822/text.pdf.jpg?sequence=4&isAllowed=y |
 
 ### Search-D-MediumItem requests
 
 Samples | Bytes/request | Seconds/request | Path
 -|-|-|-
-10 | 15KB | .23 | /handle/123456789/8988 |
+10 | 15KB | .238 | /handle/123456789/8988 |
 
 ### Search-E-MediumDownload requests
 
 Samples | Bytes/request | Seconds/request | Path
 -|-|-|-
-10 | 22KB | .02 | /bitstream/handle/123456789/8988/text.pdf?sequence=1&isAllowed=y |
-10 | 8KB | .06 | /favicon.ico |
+10 | 22KB | .022 | /bitstream/handle/123456789/8988/text.pdf?sequence=1&isAllowed=y |
+10 | 8KB | .062 | /favicon.ico |

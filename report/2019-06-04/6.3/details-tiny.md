@@ -27,50 +27,50 @@ Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may wa
 
 Samples | Bytes/request | Seconds/request | Path
 -|-|-|-
-10 | 21KB | .16 | / |
-10 | 143KB | 0 | /themes/Mirage2/styles/main.css |
-10 | 51KB | 0 | /themes/Mirage2/vendor/modernizr/modernizr.js |
-10 | 32KB | 0 | /themes/Mirage2/vendor/jquery-ui/themes/base/jquery-ui.css |
-10 | 408KB | .02 | /themes/Mirage2/scripts/theme.js |
-10 | 1KB | 0 | /static/icons/feed.png |
-10 | 4KB | 0 | /themes/Mirage2/images/DSpace-logo-line.svg |
-10 | 2KB | 0 | /themes/Mirage2/images/atmire-logo-small.svg |
-10 | 23KB | 0 | /themes/Mirage2/vendor/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.woff |
-10 | 4KB | 0 | /themes/Mirage2/images/apple-touch-icon.png |
-10 | 738 bytes | 0 | /themes/Mirage2/images/favicon.ico |
+10 | 21KB | .168 | / |
+10 | 143KB | .008 | /themes/Mirage2/styles/main.css |
+10 | 51KB | .006 | /themes/Mirage2/vendor/modernizr/modernizr.js |
+10 | 32KB | .006 | /themes/Mirage2/vendor/jquery-ui/themes/base/jquery-ui.css |
+10 | 408KB | .020 | /themes/Mirage2/scripts/theme.js |
+10 | 1KB | .004 | /static/icons/feed.png |
+10 | 4KB | .004 | /themes/Mirage2/images/DSpace-logo-line.svg |
+10 | 2KB | .004 | /themes/Mirage2/images/atmire-logo-small.svg |
+10 | 23KB | .005 | /themes/Mirage2/vendor/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.woff |
+10 | 4KB | .004 | /themes/Mirage2/images/apple-touch-icon.png |
+10 | 738 bytes | .007 | /themes/Mirage2/images/favicon.ico |
 
 ### Tiny-B-Community requests
 
 Samples | Bytes/request | Seconds/request | Path
 -|-|-|-
-10 | 42KB | .81 | /handle/123456789/244 |
+10 | 42KB | .816 | /handle/123456789/244 |
 
 ### Tiny-C-Subcommunity requests
 
 Samples | Bytes/request | Seconds/request | Path
 -|-|-|-
-10 | 42KB | .89 | /handle/123456789/245 |
+10 | 42KB | .897 | /handle/123456789/245 |
 
 ### Tiny-D-Collection requests
 
 Samples | Bytes/request | Seconds/request | Path
 -|-|-|-
-10 | 39KB | .32 | /handle/123456789/246 |
+10 | 39KB | .322 | /handle/123456789/246 |
 
 ### Tiny-E-Recent requests
 
 Samples | Bytes/request | Seconds/request | Path
 -|-|-|-
-10 | 32KB | .21 | /handle/123456789/246/recent-submissions |
+10 | 32KB | .214 | /handle/123456789/246/recent-submissions |
 
 ### Tiny-F-Item requests
 
 Samples | Bytes/request | Seconds/request | Path
 -|-|-|-
-10 | 14KB | .16 | /handle/123456789/33089 |
+10 | 14KB | .169 | /handle/123456789/33089 |
 
 ### Tiny-G-ItemFull requests
 
 Samples | Bytes/request | Seconds/request | Path
 -|-|-|-
-10 | 16KB | .12 | /handle/123456789/33089?show=full |
+10 | 16KB | .126 | /handle/123456789/33089?show=full |

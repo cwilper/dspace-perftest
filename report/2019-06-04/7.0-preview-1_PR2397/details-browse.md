@@ -26,73 +26,73 @@ Numbers **in bold** below are higher than most (>=1MB or >=1 second), and may wa
 
 Samples | Bytes/request | Seconds/request | Path
 -|-|-|-
-6 | 44KB | **1.76** | / |
-6 | 8KB | .01 | /assets/images/dspace-logo.png |
-6 | 2KB | .04 | /assets/images/dspace-logo.svg |
-6 | 599KB | .19 | /client.js |
-6 | 74KB | .05 | /assets/fonts/fa-solid-900.woff2 |
-6 | 1KB | .05 | /assets/images/favicon.ico |
-6 | 8KB | .04 | /assets/i18n/en.json |
-6 | 5KB | .04 | /0.client.js |
-6 | 6KB | .03 | /6.client.js |
-6 | 3KB | 0 | /spring-rest/api?endpointMap |
-6 | 9KB | .04 | /7.client.js |
-6 | 9KB | .04 | /8.client.js |
-6 | 12KB | .03 | /3.client.js |
-6 | 22KB | .04 | /10.client.js |
-6 | 29KB | .04 | /2.client.js |
-6 | 18KB | .04 | /9.client.js |
-6 | 7KB | .04 | /11.client.js |
-6 | 2KB | .04 | /13.client.js |
-6 | 8KB | .04 | /12.client.js |
-6 | 3KB | .04 | /14.client.js |
-6 | 10KB | .04 | /4.client.js |
-6 | 3KB | .04 | /15.client.js |
-6 | 6KB | .04 | /16.client.js |
-6 | 6KB | .04 | /17.client.js |
-6 | 31KB | .04 | /1.client.js |
-6 | 6KB | .04 | /18.client.js |
-6 | **1.0MB** | **1.45** | /spring-rest/api/core/communities?endpointMap |
-6 | 751 bytes | .01 | /spring-rest/api/core/communities/search?endpointMap |
-6 | **1.0MB** | **1.64** | /spring-rest/api/core/communities/search/top?page=0&size=5&sort=dc.title%2CASC |
-6 | 412 bytes | .34 | /spring-rest/api/core/communities/edb3df48-cba7-4c27-b573-50906be42a5f/logo |
-6 | 412 bytes | .33 | /spring-rest/api/core/communities/02f7521c-b14f-41eb-9557-c3112f932800/logo |
-6 | 412 bytes | .28 | /spring-rest/api/core/communities/cb26f292-e77b-496f-a125-bb00dfaa801f/logo |
-6 | 412 bytes | .23 | /spring-rest/api/core/communities/9bc3115a-1d35-4bce-9129-760ce1e36503/logo |
+6 | 44KB | **1.760** | / |
+6 | 8KB | .018 | /assets/images/dspace-logo.png |
+6 | 2KB | .045 | /assets/images/dspace-logo.svg |
+6 | 599KB | .191 | /client.js |
+6 | 74KB | .058 | /assets/fonts/fa-solid-900.woff2 |
+6 | 1KB | .056 | /assets/images/favicon.ico |
+6 | 8KB | .042 | /assets/i18n/en.json |
+6 | 5KB | .044 | /0.client.js |
+6 | 6KB | .038 | /6.client.js |
+6 | 3KB | .004 | /spring-rest/api?endpointMap |
+6 | 9KB | .044 | /7.client.js |
+6 | 9KB | .045 | /8.client.js |
+6 | 12KB | .039 | /3.client.js |
+6 | 22KB | .041 | /10.client.js |
+6 | 29KB | .044 | /2.client.js |
+6 | 18KB | .043 | /9.client.js |
+6 | 7KB | .044 | /11.client.js |
+6 | 2KB | .044 | /13.client.js |
+6 | 8KB | .044 | /12.client.js |
+6 | 3KB | .045 | /14.client.js |
+6 | 10KB | .044 | /4.client.js |
+6 | 3KB | .044 | /15.client.js |
+6 | 6KB | .046 | /16.client.js |
+6 | 6KB | .045 | /17.client.js |
+6 | 31KB | .045 | /1.client.js |
+6 | 6KB | .044 | /18.client.js |
+6 | **1.0MB** | **1.458** | /spring-rest/api/core/communities?endpointMap |
+6 | 751 bytes | .015 | /spring-rest/api/core/communities/search?endpointMap |
+6 | **1.0MB** | **1.649** | /spring-rest/api/core/communities/search/top?page=0&size=5&sort=dc.title%2CASC |
+6 | 412 bytes | .341 | /spring-rest/api/core/communities/edb3df48-cba7-4c27-b573-50906be42a5f/logo |
+6 | 412 bytes | .332 | /spring-rest/api/core/communities/02f7521c-b14f-41eb-9557-c3112f932800/logo |
+6 | 412 bytes | .280 | /spring-rest/api/core/communities/cb26f292-e77b-496f-a125-bb00dfaa801f/logo |
+6 | 412 bytes | .230 | /spring-rest/api/core/communities/9bc3115a-1d35-4bce-9129-760ce1e36503/logo |
 
 ### Browse-B-ByTitleBig20 requests
 
 Samples | Bytes/request | Seconds/request | Path
 -|-|-|-
-6 | 3KB | .01 | /spring-rest/api/discover/browses |
-6 | **1.1MB** | **3.85** | /spring-rest/api/discover/browses/title/items?sort=dc.title%2CASC&page=0&size=20 |
+6 | 3KB | .014 | /spring-rest/api/discover/browses |
+6 | **1.1MB** | **3.859** | /spring-rest/api/discover/browses/title/items?sort=dc.title%2CASC&page=0&size=20 |
 
 ### Browse-C-ByTitleBig100 requests
 
 Samples | Bytes/request | Seconds/request | Path
 -|-|-|-
-6 | **5.6MB** | **25.37** | /spring-rest/api/discover/browses/title/items?sort=dc.title%2CASC&page=0&size=100 |
+6 | **5.6MB** | **25.375** | /spring-rest/api/discover/browses/title/items?sort=dc.title%2CASC&page=0&size=100 |
 
 ### Browse-D-ByTitleSmall100 requests
 
 Samples | Bytes/request | Seconds/request | Path
 -|-|-|-
-6 | **1.7MB** | **3.75** | /spring-rest/api/discover/browses/title/items?sort=dc.title%2CASC&page=0&size=100&startsWith=S |
+6 | **1.7MB** | **3.758** | /spring-rest/api/discover/browses/title/items?sort=dc.title%2CASC&page=0&size=100&startsWith=S |
 
 ### Browse-E-SmallItem requests
 
 Samples | Bytes/request | Seconds/request | Path
 -|-|-|-
-6 | 16KB | .04 | /spring-rest/api/core/items/e7986d5a-5db3-4d5e-b30a-d40bfe92af3b |
-6 | 9KB | .09 | /spring-rest/api/core/bitstreams/9f07a7f9-746a-4856-ad04-ebc4e6f30931/content |
-6 | 12KB | 0 | /spring-rest/api/core/collections/7dca3c38-683c-412d-87a5-4a26b74b4abe/license |
-6 | 413 bytes | .01 | /spring-rest/api/core/collections/7dca3c38-683c-412d-87a5-4a26b74b4abe/logo |
-6 | 6KB | 0 | /19.client.js |
+6 | 16KB | .041 | /spring-rest/api/core/items/e7986d5a-5db3-4d5e-b30a-d40bfe92af3b |
+6 | 9KB | .090 | /spring-rest/api/core/bitstreams/9f07a7f9-746a-4856-ad04-ebc4e6f30931/content |
+6 | 12KB | .008 | /spring-rest/api/core/collections/7dca3c38-683c-412d-87a5-4a26b74b4abe/license |
+6 | 413 bytes | .013 | /spring-rest/api/core/collections/7dca3c38-683c-412d-87a5-4a26b74b4abe/logo |
+6 | 6KB | .004 | /19.client.js |
 
 ### Browse-F-SmallDownload requests
 
 Samples | Bytes/request | Seconds/request | Path
 -|-|-|-
-6 | 3KB | .01 | /spring-rest/api/core/bitstreams/a9970f26-e580-4e57-9803-1ca4617dd437/content |
-6 | 43KB | .11 | /favicon.ico |
-6 | 3KB | .01 | /spring-rest/api/core/bitstreams/a9970f26-e580-4e57-9803-1ca4617dd437/content |
+6 | 3KB | .018 | /spring-rest/api/core/bitstreams/a9970f26-e580-4e57-9803-1ca4617dd437/content |
+6 | 43KB | .112 | /favicon.ico |
+6 | 3KB | .016 | /spring-rest/api/core/bitstreams/a9970f26-e580-4e57-9803-1ca4617dd437/content |

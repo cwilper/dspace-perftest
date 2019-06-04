@@ -394,7 +394,7 @@ EOF
             num_samples=${num_samples_by_page_name[$name]}
             avg_ms=$((${total_ms_by_page_name[$name]} / $num_samples))
             avg_bytes=$((${total_bytes_by_page_name[$name]} / $num_samples))
-            local sec=$(bc<<<"scale=2;${avg_ms}/1000")
+            local sec=$(bc<<<"scale=3;${avg_ms}/1000")
             if [[ $avg_ms -ge 1000 ]]; then
               sec="**$sec**"
             fi
