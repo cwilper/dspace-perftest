@@ -318,7 +318,8 @@ EOF
     cat > $md << EOF
 # "$session_name" session details
 
-The following numbers are averages observed during the initial single-threaded phase of the test.
+The following averages are computed over a number of samples taken for each request during
+the initial single-threaded phase of the test.
 
 For detailed information about the user activities associated with each "transaction" below,
 see [Sessions, transactions, and requests](../../doc/sessions).
@@ -376,16 +377,12 @@ EOF
           fi
         done
 
-# These commented out lines can be deleted
-#        local num_samples=${num_samples_by_page_name[$page_name]}
-#        local avg_ms=$((${total_ms_by_page_name[$page_name]} / $num_samples))
-#        local avg_bytes=$((${total_bytes_by_page_name[$page_name]} / $num_samples))
         cat >> $md << EOF
 
 ### $page_name requests
 
-| Samples | Bytes/request | Seconds/request | Path |
-| - | - | - |
+Samples | Bytes/request | Seconds/request | Path
+-|-|-|-
 EOF
 
         while read name; do
