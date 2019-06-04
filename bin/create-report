@@ -168,7 +168,7 @@ create_md() {
         ts1=$ts
       fi
       local elapsed=$((ts-ts1))
-      if [[ $elapsed -lt $((1000 * 60 * 5)) ]]; then
+      if [[ $elapsed -lt $((1000 * 60 * 12)) ]]; then
         IFS="-" read -ra arr2 <<< "$page_name"
         local session_name=${arr2[0]}
 
@@ -215,9 +215,9 @@ create_md() {
   cat > $md << EOF
 # $report_name
 
-During this test, the number of concurrent threads was doubled every five minutes, starting with one thread
-for the first five minutes, peaking at 32 threads, and ramping back down to a single thread for a few minutes
-to end the test.
+During this test, the number of concurrent threads started at one, and was doubled after 12 minutes,
+doubling every 2 minutes after that, peaking at 32 threads, then ramped down to a single thread for
+a couple minutes to end the test.
 
 ![](threads.png)
 
@@ -226,7 +226,7 @@ see [Sessions, transactions, and requests](../../doc/sessions).
 
 ## Single-threaded results
 
-During the first 5 minutes of the test, a single thread was used to make all requests,
+During the first phase of the test, a single thread was used to make all requests,
 so the server only had to handle one request at a time. This put an artificially low load on the server,
 while providing an average "best case" roundtrip time number per request.
 
@@ -376,14 +376,15 @@ EOF
           fi
         done
 
-        local num_samples=${num_samples_by_page_name[$page_name]}
-        local avg_ms=$((${total_ms_by_page_name[$page_name]} / $num_samples))
-        local avg_bytes=$((${total_bytes_by_page_name[$page_name]} / $num_samples))
+# These commented out lines can be deleted
+#        local num_samples=${num_samples_by_page_name[$page_name]}
+#        local avg_ms=$((${total_ms_by_page_name[$page_name]} / $num_samples))
+#        local avg_bytes=$((${total_bytes_by_page_name[$page_name]} / $num_samples))
         cat >> $md << EOF
 
 ### $page_name requests
 
-| Bytes/request | Seconds/request | Path |
+| Samples | Bytes/request | Seconds/request | Path |
 | - | - | - |
 EOF
 
@@ -404,7 +405,7 @@ EOF
             if [[ $avg_bytes -ge 1000000 ]]; then
               size="**$size**"
             fi
-            echo "| $size | $sec | $url |" >> $md
+            echo "$num_samples | $size | $sec | $url |" >> $md
           fi
         done < <(for name in "${!url_by_name[@]}"; do
                    if [[ $name =~ ^$page_name ]]; then
