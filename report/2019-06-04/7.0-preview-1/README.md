@@ -24,10 +24,10 @@ performance picture, **the seconds/session numbers do not accurately reflect exp
 
 Session | Pages/session | Bytes/session | Seconds/session | Transaction details
 -|-|-|-|-
-Big | 7 | 4.2MB | 16.7 | [See details](details-big)
-Browse | 6 | 11.6MB | 41.3 | [See details](details-browse)
-Search | 5 | 5.0MB | 12.4 | [See details](details-search)
-Tiny | 7 | 3.4MB | 8.4 | [See details](details-tiny)
+Big | 7 | 4.2MB | 16.77 | [See details](details-big)
+Browse | 6 | 11.6MB | 41.38 | [See details](details-browse)
+Search | 5 | 5.0MB | 12.41 | [See details](details-search)
+Tiny | 7 | 3.4MB | 8.45 | [See details](details-tiny)
 
 ## Test results over time
 
