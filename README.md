@@ -12,6 +12,7 @@ Additional details about these tests, including downloadable datasets, [can be f
 
 ## Baseline results
 
+* [DSpace 5.9](report/2019-06-04/5.9/README.md)
 * [DSpace 6.3](report/2019-06-04/6.3/README.md)
 * [DSpace 7.0 Preview 1](report/2019-06-04/7.0-preview-1/README.md)
 
