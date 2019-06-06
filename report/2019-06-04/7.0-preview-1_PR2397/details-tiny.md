@@ -4,7 +4,7 @@ The following averages are computed over a number of samples taken for each requ
 the initial single-threaded phase of the test.
 
 For detailed information about the user activities associated with each "transaction" below,
-see [Sessions, transactions, and requests](../../doc/sessions).
+see [Sessions, transactions, and requests](../../../doc/sessions).
 
 Transaction | Requests | Bytes/transaction | Seconds/transaction | Request details
 -|-|-|-|-

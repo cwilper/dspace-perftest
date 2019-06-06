@@ -7,7 +7,7 @@ a couple minutes to end the test.
 ![](threads.png)
 
 For detailed information about the user activities modeled in this test,
-see [Sessions, transactions, and requests](../../doc/sessions).
+see [Sessions, transactions, and requests](../../../doc/sessions).
 
 ## Single-threaded results
 
